@@ -35,6 +35,11 @@ public class Member {
 	}
 
 
+	public Member(int m_no) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public int getM_no() {
 		return m_no;
 	}

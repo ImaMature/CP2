@@ -32,7 +32,7 @@ public class MReviewController {
     @FXML
     void RegisterAction(ActionEvent event) {
     	
-	    	MainController.getMainController().LoadPage("MReviewPage");
+	    	MMainController.getmmainController().MLoadPage("MReviewWritePage");
 	    	
     }
 

@@ -21,8 +21,9 @@ public class MInfoUpdateController implements Initializable{
 	
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
-			String loginid = LoginController.loginController.getloginid();
-			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
+			String loginid = LoginController.getLoginController().getloginid();
+			int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid);
+			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginNo);
 			MemberIDLabel.setText(member.getM_id());
 		
 		}
@@ -55,7 +56,7 @@ public class MInfoUpdateController implements Initializable{
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-	    	MMainController.getmminController().MLoadPage("MyInfoPage");
+	    	MMainController.getmmainController().MLoadPage("MyInfoPage");
 	    }
 
 	    @FXML //이름 2글자 이상에서 오류
@@ -92,7 +93,7 @@ public class MInfoUpdateController implements Initializable{
 	    		alert.setTitle("알림");
 	    		alert.setHeaderText("회원정보가 수정되었습니다.");
 	    		alert.showAndWait();
-	    		MMainController.getmminController().MLoadPage("MyInfoPage");
+	    		MMainController.getmmainController().MLoadPage("MyInfoPage");
 	    	}else {
 	    		alert.setTitle("알림");
 	    		alert.setHeaderText("회원정보 수정 오류 발생!\n관리자에게 문의하세요");

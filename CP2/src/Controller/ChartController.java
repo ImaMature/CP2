@@ -19,6 +19,7 @@ public class ChartController implements Initializable  {
     public void initialize(URL arg0, ResourceBundle arg1) {
        System.out.println("РќШЏСп");
        System.out.println( savePrice.toString());
+       chart();
     }
    
    

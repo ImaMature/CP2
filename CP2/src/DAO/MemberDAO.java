@@ -32,9 +32,9 @@ public class MemberDAO {
 	public static MemberDAO getMemberDAO() {return memberDAO;} 
 	
 	//회원가입
-	public boolean RealSignupAction(Member member) {
+	public boolean RealSignupAction(Member member) { //Member 클래스에 있는 필드들을 받아오기 위해서 member라는 매개변수 선언
 		
-		String sql = "insert into member (m_id, m_pw, m_name, m_email, m_money, m_holdingcoin) values(?,?,?,?,0,0)";
+		String sql = "insert into member (m_id, m_pw, m_name, m_email, m_money, m_holdingcoin) values(?,?,?,?,0,0)"; 
 		try {
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, member.getM_id());
@@ -125,13 +125,32 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	//search m_no from m_id
+	//회원 아이디를 기준으로 회원 번호 빼오기
+	public int getMemberNo(String m_id) {
+		try {
+			String sql = "select m_no from member where m_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				return rs.getInt(1);
+			}else {
+				return 0;
+			}
+		}catch (Exception e) {
+			System.out.println("getMemberNo" + e.getMessage());
+		}
+		return 0;
+	}
 	
-	//search member(회원조회) method
-	public Member getmemberinfo(String m_id) {
+	//search member(회원조회) method 회원번호 기준
+	public Member getmemberinfo(int loginNo) {
 		String sql = "select*from member where m_no=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m_id);
+			pstmt.setInt(1, loginNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				Member member = new Member(rs.getInt(1),rs.getString(2)," ",rs.getString(4), 

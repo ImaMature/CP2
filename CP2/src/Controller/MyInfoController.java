@@ -27,8 +27,8 @@ public class MyInfoController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 		String loginid = LoginController.getLoginController().getloginid();
-		Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
-		
+		int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid);
+		Member member = MemberDAO.getMemberDAO().getmemberinfo(loginNo);
 		
 		MemberIDLabel.setText(member.getM_id());
 		MemberNameLabel.setText(member.getM_name());
@@ -67,14 +67,14 @@ public class MyInfoController implements Initializable{
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-	    	MMainController.getmminController().MLoadPage("MHomePage");
+	    	MMainController.getmmainController().MLoadPage("MHomePage");
 	    }
 
 	  
 
 	    @FXML
 	    void MemberUpdateAcion(ActionEvent event) {
-	    	MMainController.getmminController().MLoadPage("MInfoUpdatePage");
+	    	MMainController.getmmainController().MLoadPage("MInfoUpdatePage");
 	    }
 
 	    //È¸¿øÅ»Åð ¸Þ¼Òµå

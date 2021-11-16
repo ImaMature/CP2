@@ -33,7 +33,7 @@ public class MMainController implements Initializable{
 	}
 	public static MMainController mmainController;
 	
-	public static MMainController getmminController() {
+	public static MMainController getmmainController() {
 		return mmainController;
 	}
 	
@@ -73,7 +73,7 @@ public class MMainController implements Initializable{
 
     @FXML
     void BoardOMC(MouseEvent event) {
-    	MMainController.getmminController().MLoadPage("BoardPage");
+    	MMainController.getmmainController().MLoadPage("MReviewPage");
     }
 
 
@@ -109,41 +109,41 @@ public class MMainController implements Initializable{
     //회원정보
     @FXML
     void MemberInfoOMC(MouseEvent event) {
-    	MMainController.getmminController().MLoadPage("MyinfoPage");
+    	MMainController.getmmainController().MLoadPage("MyinfoPage");
     }
 
     //공지게시판
     @FXML
     void NoticeOMC(MouseEvent event) {
-    	try{MMainController.getmminController().MLoadPage("MNoticePage");}
+    	try{MMainController.getmmainController().MLoadPage("MNoticePage");}
     	catch(Exception e) {System.out.println("공지페이지이동오류" + e.getMessage());}
     }
     //QNA
     @FXML
     void QnAOMC(MouseEvent event) {
-    	MMainController.getmminController().MLoadPage("ClientServicePage");
+    	MMainController.getmmainController().MLoadPage("ClientServicePage");
     }
 
-    //입출금 버튼 클릭시 -> tradepage
+    
     @FXML
     void TradeAction(ActionEvent event) {
-    	MMainController.getmminController().MLoadPage("MyinfoPage");
+    	MMainController.getmmainController().MLoadPage("MyinfoPage");
     }
     
     //거래 버튼
     @FXML 
     void TradeAction2(ActionEvent event) {
-    	MMainController.getmminController().MLoadPage("TradePage2");
+    	MMainController.getmmainController().MLoadPage("TradePage2");
     }
 
     @FXML
     void TradeOMC(MouseEvent event) {
-    	MMainController.getmminController().MLoadPage("TradePage2");
+    	MMainController.getmmainController().MLoadPage("TradePage2");
     }
 
     @FXML
     void home(MouseEvent event) {
-    	MMainController.getmminController().MLoadPage("MHomePage");
+    	MMainController.getmmainController().MLoadPage("MHomePage");
     }
     			//after member login page move method 
     public void MLoadPage(String page) {

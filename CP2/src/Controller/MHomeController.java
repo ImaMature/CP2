@@ -14,11 +14,11 @@ public class MHomeController {
 
     @FXML
     void TradeAction(ActionEvent event) {
-    	MMainController.getmminController().MLoadPage("TradePage");
+    	MMainController.getmmainController().MLoadPage("TradePage");
     }
 
     @FXML
     void TradeAction2(ActionEvent event) {
-    	MMainController.getmminController().MLoadPage("TradePage");
+    	MMainController.getmmainController().MLoadPage("TradePage");
     }
 }

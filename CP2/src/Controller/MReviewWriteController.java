@@ -28,20 +28,26 @@ public class MReviewWriteController {
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-
+	    	MMainController.getmmainController().MLoadPage("MReviewPage");
 	    }
 
 	    @FXML
 	    void WriteAction(ActionEvent event) {
+	    	
 	    	String loginid = LoginController.getLoginController().getloginid();
-	    	Member userid = MemberDAO.getMemberDAO().getmemberinfo(loginid);
-	    	Board board = new Board(userid.getM_no(), ReviewTitletxt.getText(), ReviewContentstxt.getText(), 0, 0);
-		    	if(board != null) {
-		    		
+	    	int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid);
+	    	//Member loginInfo = MemberDAO.getMemberDAO().getmemberinfo(loginNo);
+	    	//코인 넘버를 빼오는 메소드 필요 그래서 0으로 해놨음
+	    	Board board = new Board(loginNo, ReviewTitletxt.getText(), ReviewContentstxt.getText(), 2, 0);
+	    	boolean result = BoardDAO.getboardDAO().boardwrite(board);
+		    	if(result) {
+		    			MMainController.infoAlert.setTitle("알림");
+		    			MMainController.infoAlert.setHeaderText("게시물 등록 성공");
+		    			MMainController.infoAlert.showAndWait();
 		    		
 		    	}else { 
-		    		MMainController.infoAlert.setTitle("버그 발생!");
-		    		MMainController.infoAlert.setHeaderText("잘못된 입력입니다!");
+		    		MMainController.infoAlert.setTitle("알림");
+		    		MMainController.infoAlert.setHeaderText("게시물 등록 실패");
 		    		MMainController.infoAlert.showAndWait();
 		    	}
 	    	

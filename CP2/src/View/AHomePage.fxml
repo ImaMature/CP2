@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AHomeController">
+   <children>
+      <Button fx:id="Tradebtn" layoutX="430.0" layoutY="320.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #071466;" text="어드민홈페이지" textFill="WHITE" />
+      <Button fx:id="Loginbtn" layoutX="666.0" layoutY="320.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" textFill="WHITE" />
+   </children>
+</AnchorPane>

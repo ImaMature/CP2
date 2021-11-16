@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MyInfoController">
+   <children>
+      <ImageView fitHeight="736.0" fitWidth="1032.0" layoutX="128.0" pickOnBounds="true">
+         <image>
+            <Image url="@world.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="205.0" layoutY="91.0" prefHeight="555.0" prefWidth="893.0" style="-fx-background-radius: 10; -fx-background-color: #fafafa;">
+         <children>
+            <Label fx:id="MemberIDLabel" alignment="CENTER" layoutX="31.0" layoutY="80.0" prefHeight="39.0" prefWidth="264.0" text="id print here">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label fx:id="MemberNameLabel" layoutX="113.0" layoutY="149.0" prefHeight="48.0" prefWidth="194.0" text="이름">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="MemberEmailLabel" layoutX="113.0" layoutY="216.0" prefHeight="48.0" prefWidth="194.0" text="이메일">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="MemberCoinAmountLabel" layoutX="113.0" layoutY="288.0" prefHeight="48.0" prefWidth="194.0" text="보유자산">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="MemberFundsLabel" layoutX="113.0" layoutY="362.0" prefHeight="48.0" prefWidth="194.0" text="보유자금">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="MemberUpdatebtn" layoutX="27.0" layoutY="440.0" mnemonicParsing="false" onAction="#MemberUpdateAcion" prefHeight="39.0" prefWidth="271.0" style="-fx-background-color: #071466;" text="회원정보수정" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="SignOutbtn" layoutX="28.0" layoutY="490.0" mnemonicParsing="false" onAction="#SignOutAction" prefHeight="39.0" prefWidth="271.0" style="-fx-background-color: #E6202A;" text="회원탈퇴" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane layoutX="348.0" layoutY="59.0" prefHeight="472.0" prefWidth="515.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <PieChart fx:id="CoinPieChart" prefHeight="472.0" prefWidth="515.0" />
+               </children></AnchorPane>
+            <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="47.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@email.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="53.0" layoutX="42.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@money-bag.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="47.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@coin.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="47.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@userimage2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="BackImg" fitHeight="28.0" fitWidth="27.0" layoutX="11.0" layoutY="17.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@left.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="235.0" layoutY="12.0" prefHeight="39.0" prefWidth="76.0" text="My info" textFill="#071466">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Line endX="5.0" endY="460.0" layoutX="317.0" layoutY="75.0" startX="5.0" startY="-48.0" stroke="#8a8888" />
+            <Label alignment="CENTER" layoutX="793.0" layoutY="12.0" prefHeight="39.0" prefWidth="87.0" text="Chart" textFill="#071466">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow offsetY="3.0" />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="CoinUpdatebtn" layoutX="429.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinUpdateAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="CoinDeletebtn3" layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinDeletebtn3Action" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="코인삭제" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextField layoutX="430.0" layoutY="160.0" prefHeight="38.0" prefWidth="421.0" promptText="코인이름" />
+      <TextArea layoutX="429.0" layoutY="222.0" prefHeight="200.0" prefWidth="421.0" promptText="코인정보" />
+      <TextField layoutX="429.0" layoutY="443.0" prefHeight="38.0" prefWidth="421.0" promptText="코인수량" />
+   </children>
+</AnchorPane>

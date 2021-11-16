@@ -1,0 +1,81 @@
+백그라운드화면 색상 #ffffff
+포인트색상  #071466
+취소버튼 색상 #E6202A
+
+화면규격 1280 * 800
+
+
+DB 최신화 필요!!!(2021111)
+회원 DB 
+m_id m_pw m_name m_email m_money(회원이 갖고 있는돈) m_holdingcoin (회원이 소유한 코인 양)
+코인 DB 
+c_amount (코인별총개수) c_price(코인별 가격) c_name(코인별 이름)
+
+=================================================================================
+
+(관리자문의게시판 qa답변보낼때)
+Q&A  DB qa_title qa_contents qa_date
+
+==================================================================================
+게시판 DB들
+
+거래내역 DB 
+m_id 거래price(결제금액) 거래date
+
+자유게시판 DB 
+m_id 자유title 자유contents 자유date
+
+회원문의게시판
+m_id 문의contents 문의category 문의date
+
+공지게시판
+m_id 공지contents	공지date 공지category
+
+새소식
+보류
+
+================================================================================
+패키지 구조 설정
+
+
+Domain
+ - Member
+ - Board
+ - Coin
+ - Trade
+
+application
+ - AppMain
+
+DAO
+ - MemberDAO
+ - BoardDAO
+ - CoinDAO
+ - TradeDAO
+
+View
+ - FXMLPage
+ - 사진
+
+Controller
+ - HomeController
+ - MainController
+--------------------
+ - MLoginController
+ - MUpdateController
+ - MSignUpController
+ - MFindIdController
+ - MFindPwController
+------------------------
+
+ - CoinRegistController
+ - CoinDeleteController
+------------------------
+ - TradeController
+------------------------
+ - BNoticeController
+ - BQuestionController
+ - BAnswerController
+ - BReviewController(Main)
+ 
+BorderPane을 이동시키는게 아니라 CenterPane을 사용해서 페이지 이동을 하는 것입니다. 주의하세요!!!

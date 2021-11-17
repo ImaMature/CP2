@@ -9,4 +9,5 @@ module CoinProject1 {
 	opens Controller to javafx.graphics, javafx.fxml;
 	opens DAO to javafx.graphics, javafx.fxml;
 	opens View to javafx.graphics, javafx.fxml;
+	opens Domain to javafx.base;
 }

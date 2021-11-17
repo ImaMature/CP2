@@ -1,5 +1,7 @@
 package Domain;
 
+import DAO.MemberDAO;
+
 public class Board {
 	
 	private int b_no;
@@ -8,6 +10,8 @@ public class Board {
 	private String b_contents;
 	private int b_type;
 	private int c_no;
+	private String b_date;
+	private String writer;
 	
 	public Board() {}
 
@@ -26,15 +30,23 @@ public class Board {
 		this.b_contents = b_contents;
 		this.b_type = b_type;
 		this.c_no = c_no;
+		this.writer = MemberDAO.getMemberDAO().getmemberinfo(m_no).getM_id();
+		
 	}
 
-	public Board(String b_title, String b_contents, String b_date) {
-		super();
+	public Board(String b_title, String writer, String b_date) {
 		this.b_title = b_title;
-		this.b_contents = b_contents;
+		this.writer = writer;
+		this.b_date = b_date;
 	}
 
+	public int getB_no() {
+		return b_no;
+	}
 
+	public void setB_no(int b_no) {
+		this.b_no = b_no;
+	}
 
 	public int getM_no() {
 		return m_no;
@@ -60,7 +72,6 @@ public class Board {
 		this.b_contents = b_contents;
 	}
 
-	
 	public int getB_type() {
 		return b_type;
 	}
@@ -76,11 +87,21 @@ public class Board {
 	public void setC_no(int c_no) {
 		this.c_no = c_no;
 	}
-	
 
-	
-	
-	
-	
-	
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getB_date() {
+		return b_date;
+	}
+
+	public void setB_date(String b_date) {
+		this.b_date = b_date;
+	}
+
 }

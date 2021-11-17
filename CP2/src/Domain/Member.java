@@ -10,6 +10,7 @@ public class Member {
 	private int m_money;
 	private int m_holdingcoin;
 	
+	
 	public Member() {}
 	
 

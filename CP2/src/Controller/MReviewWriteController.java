@@ -37,18 +37,15 @@ public class MReviewWriteController {
 	    @FXML
 	    void WriteAction(ActionEvent event) {
 	    	
-	    	String loginid = LoginController.getLoginController().getloginid();
-	    	int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid);
-	    	//Member loginInfo = MemberDAO.getMemberDAO().getmemberinfo(loginNo);
-	    	
-	    	//코인 넘버를 빼오는 메소드 필요 그래서 0으로 해놨음
-	    	int coincol = BoardDAO.getboardDAO().CoinRecordCount(); //count해서 나온 컬럼은 1부터시작한다.
-	    	for(int q = 1; q < coincol + 1; q++) { //배열의 인덱스는 0부터 시작, 그러나 db컬럼은 1부터 시작 그리고 q=1이니까 1부터시작하려면 q<=coincol하거나, q<coincol+1
-	          String coinname = CoinDAO.getDAO().getCoinName(q);	
-		    		//System.out.println(coinname.toString());
-	          c_num = BoardDAO.getboardDAO().getc_no(coinname);
-	          // 1자리에 c_no를 넣어야함
-		    }//for문 끝
+	    	String loginid = LoginController.getLoginController().getloginid(); // 로그인된 아이디 값 가져오기
+	    	int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid); // 로그인된 아이디값 전해줘서 로그인된 회원의 번호 가져오기
+	    	int coincol = BoardDAO.getboardDAO().CoinRecordCount(); //(*)count로 코인의 데이터의 개수를 빼옴. 데이터의 개수 = 코인의 개수 count해서 나온 컬럼은 1부터 시작한다.
+		    	for(int q = 1; q < coincol + 1; q++) { //배열의 인덱스는 0부터 시작, 그러나 db컬럼은 1부터 시작 그리고 q=1이니까 1부터시작하려면 q<=coincol하거나, q<coincol+1
+		          String coinname = CoinDAO.getDAO().getCoinName(q); //데이터의 개수만큼 for문 돌려 코인의 이름을 얻어냄.	
+			    		//System.out.println(coinname.toString());
+		          c_num = BoardDAO.getboardDAO().getc_no(coinname); //코인의 이름으로 코인의 넘버빼와서 전역변수에 저장
+		          
+			    }//for문 끝																				//c_num 코인 넘버가 있음
 	    	Board board = new Board(loginNo, ReviewTitletxt.getText(), ReviewContentstxt.getText(), 2, c_num);
 	    	System.out.println("board 문제" + board.toString());
 	    	boolean result = BoardDAO.getboardDAO().boardwrite(board);

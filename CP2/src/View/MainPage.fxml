@@ -13,8 +13,14 @@
    <center>
       <AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Tradebtn" layoutX="430.0" layoutY="320.0" mnemonicParsing="false" onAction="#TradeAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #071466;" text="거래소 둘러보기" textFill="WHITE" />
-            <Button fx:id="Loginbtn" layoutX="677.0" layoutY="320.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="로그인" textFill="WHITE" />
+            <Button fx:id="Tradebtn" layoutX="430.0" layoutY="320.0" mnemonicParsing="false" onAction="#TradeAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #071466;" text="거래소 둘러보기" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="Loginbtn" layoutX="677.0" layoutY="320.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="로그인" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </center>

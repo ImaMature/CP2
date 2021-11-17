@@ -34,10 +34,11 @@ public class Board {
 		
 	}
 
-	public Board(String b_title, String writer, String b_date) {
+	public Board(String b_title, String writer, String b_date, int c_no) {
 		this.b_title = b_title;
 		this.writer = writer;
 		this.b_date = b_date;
+		this.c_no = c_no;
 	}
 
 	public int getB_no() {

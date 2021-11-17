@@ -20,9 +20,9 @@ public class BoardDAO {
 	public BoardDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimeZone=UTC", "root", "dhkfeh!!12");
+//			conn = DriverManager.getConnection(
+//					"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
 			System.out.println("DB연동성공");
 		} catch (Exception e) {System.out.println("DB연동실패");}
 		
@@ -34,21 +34,7 @@ public class BoardDAO {
 		return boardDAO;
 	}
 	
-	//코인 이름으로 코인 넘버 빼오기
-	public int coinNum(String c_name) {
-		try {
-			String sql = "SELECT c_no FROM coin where c_name=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, c_name);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt(1);
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
-	}
+	
 	
 	
 	//회원 넘버 빼오는 메소드
@@ -70,21 +56,7 @@ public class BoardDAO {
 		return 0;
 	}
 	
-	public String getMid() {
-		try {
-			String sql = "select m_id from member";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-				if(rs.next()) {
-					return rs.getString(1);	
-				}else {
-					return null;
-				}
-		}catch (Exception e) {
-			System.out.println(e);
-		}
-		return null;
-	}
+	
 	
 	// 게시물등록 메소드
 	public boolean boardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
@@ -101,7 +73,7 @@ public class BoardDAO {
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 		return false;
 	}
@@ -134,8 +106,8 @@ public class BoardDAO {
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 					System.out.println( rs.next() );
-					Board boards = new Board( rs.getString(3), rs.getString(4), rs.getString(5));
-					
+					Board boards = new Board( rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
+					//System.out.println("게시판빼오기"+boards.toString());
 					Mboards.add(boards);
 
 				} 
@@ -143,8 +115,54 @@ public class BoardDAO {
 			
 		} catch (Exception e) { System.out.println( e ); } return Mboards;
 	}
-	
+	//코인 테이블에 뭐가 있는지 모를 때 필드 개수 빼오기 -> 빼온 필드 개수
+	public int CoinRecordCount() {
+		String sql = "select count(*) from coin";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			
+		}
+		return 0;
+	}
 
+	//c_name으로 c_no 다시 찾아서 보드에 MReiviewWriteController에서 넣어서 코인으로 게시판 구분지을수 있도록
+	public int getc_no (String c_name) {
+		String sql = "select c_no from coin where c_name=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, c_name);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	
+	
+// CoinDAO에 있음
+//	//for문으로 돌린 필드만큼 코인이 있을 테니 그 for 문의 int i를 전달받을 메소드 필요
+//		//i를 전달받아서 코인의 이름 찾기
+//	public String findc_name(int i) {
+//		String sql = "select c_name from coin where c_no";
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			if(rs.next()) {
+//				return rs.getString(1);
+//			}
+//		}catch (Exception e) {
+//			System.out.println(e);
+//		}
+//		return null;
+//	}
 
 	
 

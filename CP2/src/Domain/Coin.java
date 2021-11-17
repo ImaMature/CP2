@@ -17,6 +17,10 @@ public class Coin {
 	public Coin() {}
 
 
+	public Coin(String string, int int1, int int2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getC_maxcoin() {
 		return c_maxcoin;
 	}

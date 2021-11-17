@@ -26,7 +26,7 @@ public class MReviewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ObservableList<Board> Mboards = BoardDAO.getboardDAO().MBoardList(2); //게시판 타입 2번일때 인수 전달
 		CoinReviewTable.setItems(Mboards);
-		System.out.println( Mboards.toString() );
+		System.out.println("coinreviewtable"+Mboards.toString() );
 		TableColumn tc = CoinReviewTable.getColumns().get(0);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_title"));
 		

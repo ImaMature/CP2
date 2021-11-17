@@ -28,7 +28,7 @@ public class MReviewDetailController {
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-
+	    	MMainController.getmmainController().MLoadPage("MReviewWritePage");
 	    }
 
 	    @FXML

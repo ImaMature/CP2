@@ -20,9 +20,9 @@ public class BoardDAO {
 	public BoardDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//conn = DriverManager.getConnection(
-					//"jdbc:mysql://localhost:3307/javafx?serverTimezone=UTC", "root", "1234");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimeZone=UTC", "root", "dhkfeh!!12");
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3307/javafx?serverTimezone=UTC", "root", "1234");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimeZone=UTC", "root", "dhkfeh!!12");
 			System.out.println("DB연동성공");
 		} catch (Exception e) {System.out.println("DB연동실패");}
 		
@@ -33,6 +33,10 @@ public class BoardDAO {
 	public static BoardDAO getboardDAO() {  //저장된 boardDAO를 호출하기 위해 쓰는 메소드
 		return boardDAO;
 	}
+	
+	
+	
+	
 	
 	//회원 넘버 빼오는 메소드
 	public int boardgetMno(String m_id) {
@@ -53,12 +57,13 @@ public class BoardDAO {
 		return 0;
 	}
 	
+	//게시물 읽어오는것
 	public ObservableList<Board> MBoardList() {
 		ObservableList<Board> Mboards = FXCollections.observableArrayList();
 		String sql = "select b_no from board where b_type = 2 order by c_no desc";
-		int i = 0;
+									// 2번 공지사항 타입을 번호로 빼오는것
 		try {
-			// 1번 공지사항 타입을 번호로 빼오는것
+			
 				pstmt = conn.prepareStatement(sql);
 				rs=pstmt.executeQuery();
 				while(rs.next()) {

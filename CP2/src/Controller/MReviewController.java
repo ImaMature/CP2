@@ -13,7 +13,7 @@ public class MReviewController {
 
 	
     @FXML
-    private TableView<?> Coinreview;
+    private TableView<Board> Coinreview;
 
     @FXML
     private Button PostDeletebtn;

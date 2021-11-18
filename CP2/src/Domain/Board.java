@@ -1,5 +1,6 @@
 package Domain;
 
+import DAO.BoardDAO;
 import DAO.MemberDAO;
 
 public class Board {
@@ -14,6 +15,15 @@ public class Board {
 	private String writer;
 	
 	public Board() {}
+
+	public Board(int m_no, String b_title, String b_date, int c_no) {
+		this.m_no = BoardDAO.getboardDAO().ChangeNo();
+		this.writer = MemberDAO.getMemberDAO().getMid(m_no);
+		this.b_title = b_title;
+		this.b_date = b_date;
+		this.c_no = c_no;
+	}
+
 
 	public Board(int m_no, String b_title, String b_contents, int b_type, int c_no) {
 		this.m_no = m_no;
@@ -30,8 +40,16 @@ public class Board {
 		this.b_contents = b_contents;
 		this.b_type = b_type;
 		this.c_no = c_no;
-		this.writer = MemberDAO.getMemberDAO().getmemberinfo(m_no).getM_id();
+		int nameList = BoardDAO.getboardDAO().ChangeNo();
+		this.writer = MemberDAO.getMemberDAO().getMid(nameList);
 		
+	}
+	
+	public Board(String b_title, String writer, String b_date) {
+		this.b_title = b_title;
+		int nameList = BoardDAO.getboardDAO().ChangeNo();
+		this.writer = MemberDAO.getMemberDAO().getMid(nameList);
+		this.b_date = b_date;
 	}
 
 	public Board(String b_title, String writer, String b_date, int c_no) {

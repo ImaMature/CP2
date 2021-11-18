@@ -218,4 +218,19 @@ public class MemberDAO {
 		return null;
 	}
 	
+	public int membercount() {
+		String sql = "select count(*) from member";
+		try {
+			pstmt= conn.prepareStatement(sql);
+			rs= pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}else {
+				return 0;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
+	}
 }

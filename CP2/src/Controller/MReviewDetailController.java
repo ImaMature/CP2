@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import DAO.MemberDAO;
+import Domain.Board;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,13 +18,21 @@ public class MReviewDetailController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
 		
 		
-//		String id = MemberDAO.getMemberDAO().getMid(MReviewController.Mboard.getM_no());
-//		if(!id.equals(LoginController.getLoginController().getloginid())) {
-//			PostDeletebtn.setVisible(false);
-//			PostUpdatebtn.setVisible(false);
-//		}
+		String writer = LoginController.getLoginController().getloginid();
+		int m_no = MemberDAO.getMemberDAO().getMemberNo(writer);
+		String writer2 = MemberDAO.getMemberDAO().getMid(m_no);
+		
+		//현재 이용자의 아이디 = writer 
+		if(!writer.equals(writer2)) {
+			PostDeletebtn.setVisible(false);
+			PostUpdatebtn.setVisible(false);
+		}else {
+			PostDeletebtn.setVisible(true);
+			PostDeletebtn.setVisible(true);
+		}
 	}
 	
 	  @FXML
@@ -48,7 +57,7 @@ public class MReviewDetailController implements Initializable {
 
 	    @FXML
 	    void DeleteAction(ActionEvent event) {
-
+	    	
 	    }
 
 	    @FXML

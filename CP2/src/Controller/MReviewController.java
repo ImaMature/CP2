@@ -1,6 +1,7 @@
 package Controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import DAO.BoardDAO;
@@ -28,17 +29,20 @@ public class MReviewController implements Initializable {
 		CoinReviewTable.refresh();
 		
 		ObservableList<Board> Mboards = BoardDAO.getboardDAO().MBoardList(2, MReviewCoinbtnController.C_num); //게시판 타입 2번일때 인수 전달
-		
+		ArrayList<String> mName = new ArrayList<>();
 		CoinReviewTable.setItems(Mboards);
 		System.out.println("coinreviewtable"+Mboards.toString() );
 		TableColumn tc = CoinReviewTable.getColumns().get(0);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_title"));
-		
+	
 		tc = CoinReviewTable.getColumns().get(1);
 		tc.setCellValueFactory(new PropertyValueFactory<>("writer"));
 		
 		tc = CoinReviewTable.getColumns().get(2);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_date"));
+		
+		
+		
 			
 
 		
@@ -51,6 +55,7 @@ public class MReviewController implements Initializable {
 				Mboard = CoinReviewTable.getSelectionModel().getSelectedItem();
 				//MMainController.getmmainController().MLoadPage(null);
 				MReviewCoinbtnController.getRC().RLoadPage("MReviewDetail");
+				
 			}
 		});
 	}

@@ -38,10 +38,12 @@ public class MReviewController implements Initializable {
 			
 
 		
-		
-		
+//		
+//		
 		CoinReviewTable.setOnMouseClicked(e -> {
 			if(e.getButton().equals(MouseButton.PRIMARY)) {
+				
+				
 				Mboard = CoinReviewTable.getSelectionModel().getSelectedItem();
 				MMainController.getmmainController().MLoadPage("MReviewDetail");
 			}

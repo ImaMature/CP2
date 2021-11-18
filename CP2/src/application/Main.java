@@ -17,10 +17,10 @@ public class Main extends Application {
 			Scene scene = new Scene(parent);
 			// 폰트 로드 
 
-			Font.loadFont( getClass().getResourceAsStream("esamanru Medium.ttf"), 20);
-
-			// 외부 스타일시트 적용 
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//			Font.loadFont( getClass().getResourceAsStream("esamanru Medium.ttf"), 20);
+//
+//			// 외부 스타일시트 적용 
+//			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				stage.setScene(scene);
 				stage.setResizable(false);
 				stage.setTitle("Gazua!");

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="Controller.MNoticeController" prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MNoticeController">
    <children>
-      <TableView fx:id="NoticeTableView" layoutX="59.0" layoutY="163.0" prefHeight="513.0" prefWidth="1149.0">
+      <TableView fx:id="NoticeTableView" layoutX="59.0" layoutY="110.0" prefHeight="566.0" prefWidth="1149.0">
          <columns>
             <TableColumn prefWidth="179.0" text="번호" />
             <TableColumn prefWidth="779.0" text="제목" />
@@ -15,8 +15,6 @@
             <TableColumn minWidth="0.0" prefWidth="0.0" />
          </columns>
       </TableView>
-      <Button fx:id="Registerbtn" layoutX="789.0" layoutY="80.0" mnemonicParsing="false" onAction="#RegisterAction" prefHeight="51.0" prefWidth="123.0" text="등록" />
-      <Button fx:id="Updatebtn" layoutX="934.0" layoutY="80.0" mnemonicParsing="false" onAction="#UpdateAction" prefHeight="51.0" prefWidth="123.0" text="수정" />
-      <Button fx:id="Deletebtn" layoutX="1077.0" layoutY="80.0" mnemonicParsing="false" onAction="#DeleteAction" prefHeight="51.0" prefWidth="123.0" text="삭제" />
+      <Label layoutX="115.0" layoutY="52.0" text="공지사항" />
    </children>
 </AnchorPane>

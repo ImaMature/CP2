@@ -20,10 +20,10 @@ public class MemberDAO {
 	public MemberDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-//			conn = DriverManager.getConnection(
-//					"jdbc:mysql://localhost:3307/coinproject?serverTimeZone=UTC", "root" , "1234");
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root" , "dhkfeh!!12");
+					"jdbc:mysql://localhost:3307/coinproject?serverTimeZone=UTC", "root" , "1234");
+//			conn = DriverManager.getConnection(
+//					"jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root" , "dhkfeh!!12");
 		} catch (Exception e) {
 			System.out.println("DB연동문제"+e.getMessage());
 		}
@@ -199,6 +199,23 @@ public class MemberDAO {
 		return false;
 	}
 	
-	
+	//회원 번호로 회원 아이디 빼오기
+	public String getMid(int m_no) {
+		String sql = "select m_id from member where m_no=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m_no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getString(1);
+			}else {
+				return null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

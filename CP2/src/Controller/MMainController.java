@@ -101,9 +101,6 @@ public class MMainController implements Initializable{
     	}
     }
 	
-	public void StageHide() {
-		Stage stage = new Stage();
-	}
 	
 	
     //회원정보

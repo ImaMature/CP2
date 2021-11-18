@@ -22,7 +22,8 @@ public class CoinDAO {
    public CoinDAO() {
       try {
          Class.forName("com.mysql.cj.jdbc.Driver");
-         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
+         conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+//         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
       } catch (Exception e) {
          System.out.println(e.getMessage());
       }
@@ -136,12 +137,16 @@ public class CoinDAO {
          pstmt.setInt(1, c_no);
          
          rs = pstmt.executeQuery();
-         while(true) {
+         while(rs.next()) {
             return rs.getString(1);
          }
+         return null;
       } catch (SQLException e) {
          System.out.println(e.getMessage());
          return null;
       }
    }
+   
+   
+   
 }

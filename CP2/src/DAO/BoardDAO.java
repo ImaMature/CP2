@@ -71,8 +71,8 @@ public class BoardDAO {
 			pstmt.setInt(5, board.getC_no());
 			pstmt.executeUpdate();
 			return true;
-		} catch (SQLException e) {
-			System.out.println(e);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		return false;
 	}
@@ -94,17 +94,22 @@ public class BoardDAO {
 //		}
 //	
 	//일반 게시판 빼오기
-	public ObservableList<Board> MBoardList( int type ) {
+	/**
+	 * @param type
+	 * @return
+	 */
+	public ObservableList<Board> MBoardList( int type, int c_num ) {
 		ObservableList<Board> Mboards = FXCollections.observableArrayList();
-		String sql = "select * from board where b_type = ? and c_no=1 order by b_no desc";
+		String sql = "select * from board where b_type = ? and c_no=? order by b_no desc";
 									//게시판 타입이 2번이고 코인넘버가 1인 게시판을 검색한다. 그리고 게시판 넘버에 따라 내림차순으로 정리한다.
 		try {
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, type);
+				pstmt.setInt(2, c_num);
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
-					System.out.println( rs.next() );
+					
 					Board boards = new Board( rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
 					//System.out.println("게시판빼오기"+boards.toString());
 					Mboards.add(boards);
@@ -144,6 +149,15 @@ public class BoardDAO {
 		}
 		return 0;
 	}
+
+
+
+
+	public ObservableList<Board> MBoardList(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 // CoinDAO에 있음

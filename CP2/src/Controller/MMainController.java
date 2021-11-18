@@ -73,7 +73,7 @@ public class MMainController implements Initializable{
 
     @FXML
     void BoardOMC(MouseEvent event) {
-    	MMainController.getmmainController().MLoadPage("MReviewPage");
+    	MMainController.getmmainController().MLoadPage("MReviewCoinbtnpage");
     }
 
 

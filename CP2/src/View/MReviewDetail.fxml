@@ -5,84 +5,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MReviewDetailController">
+<AnchorPane prefHeight="736.0" prefWidth="1061.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MReviewDetailController">
    <children>
-      <AnchorPane layoutX="33.0" layoutY="127.0" prefHeight="483.0" prefWidth="1214.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;">
-         <children>
-            <Button fx:id="PostUpdatebtn" layoutX="925.0" layoutY="424.0" mnemonicParsing="false" onAction="#UpdateAction" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: #0008E6;" text="게시물 수정" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="PostDeletebtn" layoutX="1051.0" layoutY="424.0" mnemonicParsing="false" onAction="#DeleteAction" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: #E6202A;" text="게시물 삭제" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button alignment="CENTER" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-border-color: #FFFFFF; -fx-background-color: #FFFFFF;" text="비트코인">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutY="82.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-background-color: #fafafa;" text="리플">
-               <effect>
-                  <InnerShadow height="64.97" radius="32.7175" width="67.9" />
-               </effect>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutY="162.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-background-color: #fafafa;" text="이더리움">
-               <effect>
-                  <InnerShadow height="64.97" radius="32.7175" width="67.9" />
-               </effect>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutY="242.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-background-color: #fafafa;" text="에이다">
-               <effect>
-                  <InnerShadow height="64.97" radius="32.7175" width="67.9" />
-               </effect>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutY="322.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-background-color: #fafafa;" text="아이오타">
-               <effect>
-                  <InnerShadow height="64.97" radius="32.7175" width="67.9" />
-               </effect>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutY="401.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="338.0" style="-fx-background-color: #fafafa;" text="대시">
-               <effect>
-                  <InnerShadow height="64.97" radius="32.7175" width="67.9" />
-               </effect>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <TextField fx:id="ReviewTitletxt" layoutX="420.0" layoutY="64.0" prefHeight="33.0" prefWidth="726.0" />
-            <TextArea fx:id="ReviewContentstxt" layoutX="420.0" layoutY="122.0" prefHeight="287.0" prefWidth="726.0" />
-            <Label layoutX="368.0" layoutY="71.0" text="제목" />
-            <Label layoutX="368.0" layoutY="125.0" text="내용" />
-            <ImageView fx:id="BackImg" fitHeight="33.0" fitWidth="51.0" layoutX="364.0" layoutY="14.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@left.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-         </children>
-      </AnchorPane>
+      <ImageView fx:id="BackImg" fitHeight="33.0" fitWidth="51.0" layoutX="247.0" layoutY="64.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@left.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <TextField fx:id="ReviewTitletxt" layoutX="308.0" layoutY="148.0" prefHeight="33.0" prefWidth="726.0" />
+      <Label layoutX="251.0" layoutY="156.0" text="제목" />
+      <Label layoutX="251.0" layoutY="221.0" text="내용" />
+      <TextArea fx:id="ReviewContentstxt" layoutX="308.0" layoutY="212.0" prefHeight="287.0" prefWidth="726.0" />
+      <Button fx:id="PostUpdatebtn" layoutX="746.0" layoutY="550.0" mnemonicParsing="false" onAction="#UpdateAction" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: #0008E6;" text="게시물 수정" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="PostDeletebtn" layoutX="921.0" layoutY="550.0" mnemonicParsing="false" onAction="#DeleteAction" prefHeight="39.0" prefWidth="96.0" style="-fx-background-color: #E6202A;" text="게시물 삭제" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

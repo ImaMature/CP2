@@ -19,8 +19,11 @@ public class MReviewDetailController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		
-		String idcheck = MemberDAO.getMemberDAO().getMid();
-		if(!M)
+//		String id = MemberDAO.getMemberDAO().getMid(MReviewController.Mboard.getM_no());
+//		if(!id.equals(LoginController.getLoginController().getloginid())) {
+//			PostDeletebtn.setVisible(false);
+//			PostUpdatebtn.setVisible(false);
+//		}
 	}
 	
 	  @FXML
@@ -40,7 +43,7 @@ public class MReviewDetailController implements Initializable {
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-	    	MMainController.getmmainController().MLoadPage("MReviewWritePage");
+	    	MReviewCoinbtnController.getRC().RLoadPage("MReviewPage");
 	    }
 
 	    @FXML

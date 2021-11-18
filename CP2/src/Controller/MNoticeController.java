@@ -11,6 +11,6 @@ public class MNoticeController {
 
     @FXML
     private TableView<?> NoticeTableView;
-
+    
 
 }

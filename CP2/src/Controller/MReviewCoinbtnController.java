@@ -69,6 +69,7 @@ public class MReviewCoinbtnController implements Initializable {
     			//System.out.println( c_name + "페이지 열기 " + e.getSource().toString().split(",")[0].split("=")[1] );
     			String c_num = (e.getSource().toString().split(",")[0].split("=")[1]);
     			C_num = Integer.parseInt(c_num);
+    			
     			MReviewCoinbtnController.getRC().RLoadPage("MReviewPage");
     		}  );
     		

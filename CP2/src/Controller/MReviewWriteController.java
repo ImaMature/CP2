@@ -39,9 +39,12 @@ public class MReviewWriteController {
 	    void WriteAction(ActionEvent event) {
 	    	
 	    	String loginid = LoginController.getLoginController().getloginid(); // 로그인된 아이디 값 가져오기
-	    	int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid); // 로그인된 아이디값 전해줘서 로그인된 회원의 번호 가져오기
-	  															//c_num 코인 넘버가 있음
-	    	Board board = new Board(loginNo, ReviewTitletxt.getText(), ReviewContentstxt.getText(), 2, MReviewCoinbtnController.C_num);
+//	    	System.out.println("loginid 값 : "+loginid );
+//	    	int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid); // 로그인된 아이디값 전해줘서 로그인된 회원의 번호 가져오기
+	  		Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);													//c_num 코인 넘버가 있음
+//	  		System.out.println("member값 : " + member.toString());
+//	  		System.out.println("member.getM_no값 : " + member.getM_no());
+	    	Board board = new Board(member.getM_no(), ReviewTitletxt.getText(), ReviewContentstxt.getText(), 2, MReviewCoinbtnController.C_num);
 	    		//System.out.println("board객체 값 : " + board.toString());
 	    	boolean result = BoardDAO.getboardDAO().boardwrite(board);
 	    	if(result) {

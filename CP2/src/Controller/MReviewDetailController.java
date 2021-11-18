@@ -14,26 +14,31 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class MReviewDetailController implements Initializable {
+public class MReviewDetailController {
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		
-		
-		String writer = LoginController.getLoginController().getloginid();
-		int m_no = MemberDAO.getMemberDAO().getMemberNo(writer);
-		String writer2 = MemberDAO.getMemberDAO().getMid(m_no);
-		
-		//현재 이용자의 아이디 = writer 
-		if(!writer.equals(writer2)) {
-			PostDeletebtn.setVisible(false);
-			PostUpdatebtn.setVisible(false);
-		}else {
-			PostDeletebtn.setVisible(true);
-			PostDeletebtn.setVisible(true);
-		}
-	}
+//	@Override
+//	public void initialize(URL arg0, ResourceBundle arg1) {
+//
+//		
+//		//현재사용자 = user
+//		String user = LoginController.getLoginController().getloginid();
+//		System.out.println("user : " + user);
+//		//user 값 넣어서 m_no빼오기
+//		int m_no = MemberDAO.getMemberDAO().getMemberNo(user);
+//		System.out.println("m_no : " + m_no);
+//		//빼온 m_no로 멤버이름 찾기
+//		String writer = MemberDAO.getMemberDAO().getMid(m_no);
+//		System.out.println("writer: " + writer);
+//		
+//		//현재 사용자(user)와 빼온 이름이 같다면 수정, 삭제 버튼 보여줌.
+//		if(user.equals(writer)) {
+//			PostDeletebtn.setVisible(true);
+//			PostUpdatebtn.setVisible(true);
+//		}else {
+//			PostDeletebtn.setVisible(false);
+//			PostDeletebtn.setVisible(false);
+//		}
+//	}
 	
 	  @FXML
 	    private ImageView BackImg;

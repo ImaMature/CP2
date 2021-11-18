@@ -20,10 +20,10 @@ public class MemberDAO {
 	public MemberDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3307/coinproject?serverTimeZone=UTC", "root" , "1234");
 //			conn = DriverManager.getConnection(
-//					"jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root" , "dhkfeh!!12");
+//					"jdbc:mysql://localhost:3307/coinproject?serverTimeZone=UTC", "root" , "1234");
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root" , "dhkfeh!!12");
 		} catch (Exception e) {
 			System.out.println("DB연동문제"+e.getMessage());
 		}
@@ -146,11 +146,11 @@ public class MemberDAO {
 	}
 	
 	//search member(회원조회) method 회원번호 기준
-	public Member getmemberinfo(int loginNo) {
-		String sql = "select*from member where m_no=?";
+	public Member getmemberinfo(String m_id) {
+		String sql = "select*from member where m_id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, loginNo);
+			pstmt.setString(1, m_id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				Member member = new Member(rs.getInt(1),rs.getString(2)," ",rs.getString(4), 

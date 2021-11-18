@@ -16,43 +16,21 @@ public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	public static  BoardDAO boardDAO = new BoardDAO(); // BoardDAO에 있는 필드,메소드들을 다른 클래스에서도 쓸 수 있게 하기 위해서 boardDAO 전역변수로 선언
 	
 	public BoardDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
+			//conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
 //			System.out.println("DB연동성공");
 		} catch (Exception e) {System.out.println("DB연동실패");}
 		
 	}
 	
 
-	public static  BoardDAO boardDAO = new BoardDAO(); // BoardDAO에 있는 필드,메소드들을 다른 클래스에서도 쓸 수 있게 하기 위해서 boardDAO 전역변수로 선언
 	public static BoardDAO getboardDAO() {  //저장된 boardDAO를 호출하기 위해 쓰는 메소드
 		return boardDAO;
-	}
-	
-	
-	
-	
-	//회원 넘버 빼오는 메소드
-	public int boardgetMno(String m_id) {
-		try {
-			String sql = "select m_no from board where m_id=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m_id);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				
-				return rs.getInt(1);
-			}else {
-				return 0;
-			}
-		}catch (Exception e) {
-			System.out.println("boardgetMno" + e.getMessage());
-		}
-		return 0;
 	}
 	
 	
@@ -76,6 +54,28 @@ public class BoardDAO {
 		}
 		return false;
 	}
+	
+	//회원 넘버 빼오는 메소드
+	public int boardgetMno(String m_id) {
+		try {
+			String sql = "select m_no from board where m_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m_id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				
+				return rs.getInt(1);
+			}else {
+				return 0;
+			}
+		}catch (Exception e) {
+			System.out.println("boardgetMno" + e.getMessage());
+		}
+		return 0;
+	}
+	
+	
+	
 	
 	
 //// 일반 게시물 출력
@@ -120,29 +120,29 @@ public class BoardDAO {
 		} catch (Exception e) { System.out.println( e ); } return Mboards;
 	}
 	
-	//공지게시판 불러오기 (공지게시판 타입은 3, 회원이어야함.)
-	public ObservableList<Board> MNBoardList( int type, int c_num ) {
-		ObservableList<Board> Mboards = FXCollections.observableArrayList();
-		String sql = "select * from board where b_type = ? order by b_no desc";
-									//게시판 타입이 3번이고 코인넘버가 1인 게시판을 검색한다. 그리고 게시판 넘버에 따라 내림차순으로 정리한다.
-		try {
-				
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, type);
-				pstmt.setInt(2, c_num);
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					int nameList = BoardDAO.getboardDAO().ChangeNo();
-					String w = MemberDAO.getMemberDAO().getMid(nameList);
-					Board boards = new Board(rs.getInt(2), rs.getString(3), rs.getString(5));
-					//System.out.println("게시판빼오기"+boards.toString());
-					Mboards.add(boards);
-
-				} 
-				return Mboards;
-			
-		} catch (Exception e) { System.out.println( e ); } return Mboards;
-	}
+//	//공지게시판 불러오기 (공지게시판 타입은 3, 회원이어야함.)
+//	public ObservableList<Board> MNBoardList( int type, int c_num ) {
+//		ObservableList<Board> Mboards = FXCollections.observableArrayList();
+//		String sql = "select * from board where b_type = ? order by b_no desc";
+//									//게시판 타입이 3번이고 코인넘버가 1인 게시판을 검색한다. 그리고 게시판 넘버에 따라 내림차순으로 정리한다.
+//		try {
+//				
+//				pstmt = conn.prepareStatement(sql);
+//				pstmt.setInt(1, type);
+//				pstmt.setInt(2, c_num);
+//				rs=pstmt.executeQuery();
+//				while(rs.next()) {
+//					int nameList = BoardDAO.getboardDAO().ChangeNo();
+//					String w = MemberDAO.getMemberDAO().getMid(nameList);
+//					Board boards = new Board(rs.getInt(2), rs.getString(3), rs.getString(5));
+//					//System.out.println("게시판빼오기"+boards.toString());
+//					Mboards.add(boards);
+//
+//				} 
+//				return Mboards;
+//			
+//		} catch (Exception e) { System.out.println( e ); } return Mboards;
+//	}
 	
 	//코인 테이블에 뭐가 있는지 모를 때 필드 개수 빼오기 -> 빼온 필드 개수
 	public int CoinRecordCount() {
@@ -178,10 +178,10 @@ public class BoardDAO {
 
 
 
-	public ObservableList<Board> MBoardList(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public ObservableList<Board> MBoardList(int i) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
 	
 	

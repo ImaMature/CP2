@@ -9,22 +9,23 @@ public class Board {
 	private int m_no;
 	private String b_title;
 	private String b_contents;
+	private String b_date;
 	private int b_type;
 	private int c_no;
-	private String b_date;
 	private String writer;
 	
 	public Board() {}
 
+	//코인 리뷰 게시물 작성
 	public Board(int m_no, String b_title, String b_date, int c_no) {
-		this.m_no = BoardDAO.getboardDAO().ChangeNo();
+		this.m_no = m_no;
 		this.writer = MemberDAO.getMemberDAO().getMid(m_no);
 		this.b_title = b_title;
 		this.b_date = b_date;
 		this.c_no = c_no;
 	}
 
-
+	//문의게시판
 	public Board(int m_no, String b_title, String b_contents, int b_type, int c_no) {
 		this.m_no = m_no;
 		this.b_title = b_title;
@@ -44,7 +45,7 @@ public class Board {
 		this.writer = MemberDAO.getMemberDAO().getMid(nameList);
 		
 	}
-	
+	//게시물 출력
 	public Board(String b_title, String writer, String b_date) {
 		this.b_title = b_title;
 		int nameList = BoardDAO.getboardDAO().ChangeNo();
@@ -52,12 +53,12 @@ public class Board {
 		this.b_date = b_date;
 	}
 
-	public Board(String b_title, String writer, String b_date, int c_no) {
-		this.b_title = b_title;
-		this.writer = writer;
-		this.b_date = b_date;
-		this.c_no = c_no;
-	}
+//	public Board(String b_title, String writer, String b_date, int c_no) {
+//		this.b_title = b_title;
+//		this.writer = writer;
+//		this.b_date = b_date;
+//		this.c_no = c_no;
+//	}
 
 	public int getB_no() {
 		return b_no;

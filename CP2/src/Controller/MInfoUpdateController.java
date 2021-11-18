@@ -22,8 +22,8 @@ public class MInfoUpdateController implements Initializable{
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			String loginid = LoginController.getLoginController().getloginid();
-			int loginNo = MemberDAO.getMemberDAO().getMemberNo(loginid);
-			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginNo);
+			
+			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
 			MemberIDLabel.setText(member.getM_id());
 		
 		}

@@ -110,7 +110,7 @@ public class BoardDAO {
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 					
-					Board boards = new Board( rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
+					Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
 //					System.out.println("게시판빼오기"+boards.toString());
 					Mboards.add(boards);
 
@@ -120,29 +120,7 @@ public class BoardDAO {
 		} catch (Exception e) { System.out.println( e ); } return Mboards;
 	}
 	
-//	//공지게시판 불러오기 (공지게시판 타입은 3, 회원이어야함.)
-	public ObservableList<Board> MNBoardList( int type, int c_num ) {
-		ObservableList<Board> Mboards = FXCollections.observableArrayList();
-		String sql = "select * from board where b_type = ? order by b_no desc";
-									//게시판 타입이 3번이고 코인넘버가 1인 게시판을 검색한다. 그리고 게시판 넘버에 따라 내림차순으로 정리한다.
-		try {
-				
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, type);
-				pstmt.setInt(2, c_num);
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					int nameList = BoardDAO.getboardDAO().ChangeNo();
-					String w = MemberDAO.getMemberDAO().getMid(nameList);
-					Board boards = new Board(rs.getInt(2), rs.getString(3), rs.getString(5));
-					//System.out.println("게시판빼오기"+boards.toString());
-					Mboards.add(boards);
 
-				} 
-				return Mboards;
-			
-		} catch (Exception e) { System.out.println( e ); } return Mboards;
-	}
 	
 	//코인 테이블에 뭐가 있는지 모를 때 필드 개수 빼오기 -> 빼온 필드 개수
 	public int CoinRecordCount() {
@@ -217,9 +195,15 @@ public class BoardDAO {
 			pstmt.setString(1, b_title);
 			pstmt.setString(2, b_contents);
 			pstmt.setInt(3, b_no);
+			pstmt.executeUpdate();
+			System.out.println("a");
+			return true;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		System.out.println("b");
 		return false;
 	}
+	
+	
 }

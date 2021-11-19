@@ -4,8 +4,12 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import DAO.CoinDAO;
 import DAO.MemberDAO;
+import Domain.Coin;
 import Domain.Member;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +39,14 @@ public class MyInfoController implements Initializable{
 		MemberEmailLabel.setText(member.getM_email());
 		MemberFundsLabel.setText(member.getM_money()+"원");
 		MemberCoinAmountLabel.setText(member.getM_holdingcoin()+"개");
+		
+		 ObservableList<Coin> coins = CoinDAO.getDAO().coinlist();
+		    ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
+
+//		    for(Coin coin : coins) {
+//		    	pie.add(new PieChart.Data((), )); 뭐들어가야되는거지
+//		    }
+		
 		}
 	
 	  	
@@ -110,5 +122,7 @@ public class MyInfoController implements Initializable{
 	    	}
 	    	
 	    }
-
+	    
+	    
+	   
 }

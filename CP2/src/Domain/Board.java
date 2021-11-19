@@ -16,8 +16,9 @@ public class Board {
 	
 	public Board() {}
 
-	//코인 리뷰 게시물 작성
-	public Board(int m_no, String b_title, String b_contents, String b_date, int c_no) {
+	//코인 리뷰 게시물 테이블뷰와 관련있는 생성자
+	public Board(int b_no, int m_no, String b_title, String b_contents, String b_date, int c_no) {
+		this.b_no = b_no;
 		this.m_no = m_no;
 		this.writer = MemberDAO.getMemberDAO().getMid(m_no);
 		this.b_contents = b_contents;

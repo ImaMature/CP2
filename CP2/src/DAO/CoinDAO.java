@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Domain.Coin;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class CoinDAO {
    private Connection conn;
@@ -147,6 +149,24 @@ public class CoinDAO {
       }
    }
    
+   public ObservableList<Coin> coinlist(){
+	   ObservableList<Coin> coins = FXCollections.observableArrayList();
+	   
+	   String sql = "select * from coin order by c_no desc";
+	   try {
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		while(rs.next()) {
+			Coin coin = new Coin(rs.getInt(2),rs.getInt(3),rs.getString(4));
+			coins.add(coin);
+		}
+		return coins;
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return null;
+	   
+   }
    
    
 }

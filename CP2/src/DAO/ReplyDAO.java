@@ -1,52 +1,30 @@
 package DAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class ReplyDAO {
 
-	int r_no;
-	String r_contents;
-	String r_date;
-	int b_no;
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
 	
-	public ReplyDAO() {	}
-	
-	
-	
-	
-	
+	public static ReplyDAO replyDAO = new ReplyDAO();
 
-	public int getR_no() {
-		return r_no;
-	}
-
-	public void setR_no(int r_no) {
-		this.r_no = r_no;
-	}
-
-	public String getR_contents() {
-		return r_contents;
-	}
-
-	public void setR_contents(String r_contents) {
-		this.r_contents = r_contents;
-	}
-
-	public String getR_date() {
-		return r_date;
-	}
-
-	public void setR_date(String r_date) {
-		this.r_date = r_date;
-	}
-
-	public int getB_no() {
-		return b_no;
-	}
-
-	public void setB_no(int b_no) {
-		this.b_no = b_no;
+	public ReplyDAO() {
+	      try {
+	         Class.forName("com.mysql.cj.jdbc.Driver");
+	         conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+//	      conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
+	      } catch (Exception e) {
+	         System.out.println(e.getMessage());
+	      }
 	}
 	
-	
-	
+	public static ReplyDAO getReplyDAO () {
+		return replyDAO;
+	}
 	
 }

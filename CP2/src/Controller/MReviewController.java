@@ -26,7 +26,7 @@ public class MReviewController implements Initializable {
 	@Override // 처음에 테이블이 보여야 하기 때문에 Initializable 사용
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-//		CoinReviewTable.refresh();
+		CoinReviewTable.refresh();
 		
 		ObservableList<Board> Mboards = BoardDAO.getboardDAO().MBoardList(2, MReviewCoinbtnController.C_num); //게시판 타입 2번일때 인수 전달
 //		ArrayList<String> mName = new ArrayList<>();

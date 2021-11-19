@@ -21,8 +21,8 @@ public class BoardDAO {
 	public BoardDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			//conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
+			conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
 //			System.out.println("DB연동성공");
 		} catch (Exception e) {System.out.println("DB연동실패");}
 		
@@ -201,23 +201,49 @@ public class BoardDAO {
 //		}
 //		return null;
 //	}
-public int ChangeNo() {
-	try {
-		String sql = "select m_no from board";
-		pstmt = conn.prepareStatement(sql);
-		
-		pstmt.executeQuery();
-		while(rs.next()) {
-			return rs.getInt(1);
+	public int ChangeNo() {
+		try {
+			String sql = "select m_no from board";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.executeQuery();
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return 0;
 		}
-		return 0;
-	} catch (SQLException e) {
-		System.out.println(e.getMessage());
-		return 0;
 	}
-}
-//	public String ChangeName(int m_no) {
-//		String sql = "select m_id"
-//	}
+	//	public String ChangeName(int m_no) {
+	//		String sql = "select m_id"
+	//	}
+	
+	
+	public boolean ReviewDelete(int b_no) {
+		String sql = "delete from board where b_no=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 
+	public boolean ReviewUpdate(String b_title, String b_contents, int b_no) {
+		String sql = "update board set b_title=?, b_contents=? where b_no=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b_title);
+			pstmt.setString(2, b_contents);
+			pstmt.setInt(3, b_no);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
 }

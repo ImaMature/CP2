@@ -11,13 +11,13 @@
 
 <AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientSQController">
    <children>
-      <Label alignment="CENTER" layoutX="82.0" layoutY="23.0" prefHeight="46.0" prefWidth="255.0" text="문의하기 상세페이지">
+      <Label layoutX="108.0" layoutY="23.0" prefHeight="46.0" prefWidth="255.0" text="문의하기 ">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Button fx:id="Sendbtn" layoutX="994.0" layoutY="642.0" mnemonicParsing="false" onAction="#SendAction" prefHeight="34.0" prefWidth="102.0" style="-fx-background-color: #071466;" text="문의등록" textFill="WHITE" />
-      <ImageView fx:id="Backimg" fitHeight="34.0" fitWidth="50.0" layoutX="31.0" layoutY="23.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Backimg" fitHeight="34.0" fitWidth="50.0" layoutX="42.0" layoutY="27.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@left.png" />
          </image>

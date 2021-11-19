@@ -120,6 +120,24 @@ public class BoardDAO {
 		} catch (Exception e) { System.out.println( e ); } return Mboards;
 	}
 	
+	public ObservableList<Board> QBoardList( int type ) {
+		ObservableList<Board> Mboards = FXCollections.observableArrayList();
+		String sql = "select * from board where b_type = ?  order by b_no desc";						
+		try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, type);
+				rs=pstmt.executeQuery();
+				while(rs.next()) {
+					
+					Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
+//					System.out.println("게시판빼오기"+boards.toString());
+					Mboards.add(boards);
+
+				} 
+				return Mboards;
+			
+		} catch (Exception e) { System.out.println( e ); } return Mboards;
+	}
 
 	
 	//코인 테이블에 뭐가 있는지 모를 때 필드 개수 빼오기 -> 빼온 필드 개수
@@ -204,6 +222,5 @@ public class BoardDAO {
 		System.out.println("b");
 		return false;
 	}
-	
 	
 }

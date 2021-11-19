@@ -38,5 +38,5 @@ public class ClientAPage implements Initializable{
 	    
 	    //아이디 admin인걸 가져와야됨, 어드민이 작성한 거 가져와야됨.
 	    
-	    //
+	    //리플DB에서 가져와야한다.
 }

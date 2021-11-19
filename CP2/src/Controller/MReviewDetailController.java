@@ -28,17 +28,19 @@ public class MReviewDetailController implements Initializable{
 		
 		//내용 보여주기
 		ReviewContentstxt.setText(board.getB_contents());
-		System.out.println("내용 : "+ board.getB_contents());
+		//System.out.println("내용 : "+ board.getB_contents());
 		
 		//현재사용자 = user = getloginid해온값 이 
 		String user = LoginController.getLoginController().getloginid();
 		String writer = board.getWriter();
-		System.out.println("writer : " + writer);
+		//System.out.println("writer : " + writer);
 		
-		//현재 사용자(user)와 빼온 이름이 같다면 수정, 삭제 버튼 보여줌. 완료
+		//현재 사용자(user)와 빼온 이름이 같지 않다면 수정, 삭제 버튼 보여줌. 완료
 		if(!user.equals(writer)) {
 			PostDeletebtn.setVisible(false);
 			PostUpdatebtn.setVisible(false);
+			ReviewTitletxt.setEditable(false);
+			ReviewContentstxt.setEditable(false);
 		}
 	}
 	

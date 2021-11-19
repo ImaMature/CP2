@@ -39,6 +39,7 @@ public class MReviewController implements Initializable {
 		
 		tc = CoinReviewTable.getColumns().get(2);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_date"));
+		
 				
 		CoinReviewTable.setItems(Mboards);
 		

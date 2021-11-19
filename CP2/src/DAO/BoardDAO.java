@@ -20,10 +20,10 @@ public class BoardDAO {
 	
 	public BoardDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
-//			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
-//			System.out.println("DB연동성공");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			conn = DriverManager.getConnection(	"jdbc:mysql://localhost:3307/coinproject?serverTimezone=UTC", "root", "1234");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coinproject?serverTimeZone=UTC", "root", "dhkfeh!!12");
+			System.out.println("DB연동성공");
 		} catch (Exception e) {System.out.println("DB연동실패");}
 		
 	}
@@ -35,7 +35,7 @@ public class BoardDAO {
 	
 	
 	
-	// 코인 게시판 게시물등록 메소드
+	// 코인 리뷰 게시판 게시물등록 메소드
 	public boolean boardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
 		String sql = "insert into board(m_no, b_title, b_contents, b_type, c_no) values (?, ?, ?, ?, ?)";
 		// board table(DB)에 m_no, b_title b_contetns b_type c_no에 전달받은 값을 넣는다.
@@ -54,6 +54,25 @@ public class BoardDAO {
 		}
 		return false;
 	}
+	
+	// 코인 리뷰 게시판 게시물등록 메소드
+	public boolean QNAwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
+		String sql = "insert into board(m_no, b_title, b_contents, b_type) values (?, ?, ?, ?)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getM_no());
+			pstmt.setString(2, board.getB_title());
+			pstmt.setString(3, board.getB_contents());
+			pstmt.setInt(4, board.getB_type());
+			pstmt.executeUpdate();
+			return true;
+					
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;		
+	}
+	
 	
 	//회원 넘버 빼오는 메소드
 	public int boardgetMno(String m_id) {
@@ -93,11 +112,7 @@ public class BoardDAO {
 //			} catch (Exception e) { } return Aboards;
 //		}
 //	
-	//일반 게시판 빼오기
-	/**
-	 * @param type
-	 * @return
-	 */
+	//코인 리뷰 게시판 리스트 선언.
 	public ObservableList<Board> MBoardList( int type, int c_num ) {
 		ObservableList<Board> Mboards = FXCollections.observableArrayList();
 		String sql = "select * from board where b_type = ? and c_no=? order by b_no desc";
@@ -120,25 +135,6 @@ public class BoardDAO {
 		} catch (Exception e) { System.out.println( e ); } return Mboards;
 	}
 	
-	public ObservableList<Board> QBoardList( int type ) {
-		ObservableList<Board> Mboards = FXCollections.observableArrayList();
-		String sql = "select * from board where b_type = ?  order by b_no desc";						
-		try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, type);
-				rs=pstmt.executeQuery();
-				while(rs.next()) {
-					
-					Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt(7));
-//					System.out.println("게시판빼오기"+boards.toString());
-					Mboards.add(boards);
-
-				} 
-				return Mboards;
-			
-		} catch (Exception e) { System.out.println( e ); } return Mboards;
-	}
-
 	
 	//코인 테이블에 뭐가 있는지 모를 때 필드 개수 빼오기 -> 빼온 필드 개수
 	public int CoinRecordCount() {
@@ -223,4 +219,25 @@ public class BoardDAO {
 		return false;
 	}
 	
-}
+	//QNA게시판 리스트 선언
+	public ObservableList<Board> QBoardList( ) {
+		ObservableList<Board> MAboards = FXCollections.observableArrayList();
+		String sql = "select * from board where b_type = 3  order by b_no desc";						
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+//					System.out.println("QBoardList게시판빼오기"+boards.toString());
+				MAboards.add(boards);
+				
+			} 
+			return MAboards;
+			
+		} catch (Exception e) { System.out.println( e ); } return MAboards;
+	}
+	
+	
+	
+	
+}//class end

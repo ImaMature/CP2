@@ -2,6 +2,7 @@ package Domain;
 
 import DAO.BoardDAO;
 import DAO.MemberDAO;
+import javafx.scene.input.MouseEvent;
 
 public class Board {
 	
@@ -16,7 +17,7 @@ public class Board {
 	
 	public Board() {}
 
-	//코인 리뷰 게시물 ObservableList와 관련있는 생성자
+	//코인 리뷰 게시판 리스트 MboardList와 관련있는 생성자
 	public Board(int b_no, int m_no, String b_title, String b_contents, String b_date, int c_no) {
 		this.b_no = b_no;
 		this.m_no = m_no;
@@ -30,11 +31,12 @@ public class Board {
 	
 	
 	
-	//회원QNA게시판 ObservableList와 관련있는 생성자
+	//회원QNA게시판 ABoardList()와 관련있는 생성자
 	public Board(int b_no, int m_no, String b_title, String b_contents, String b_date, int b_type, int c_no) {
 		super();
 		this.b_no = b_no;
 		this.m_no = m_no;
+		this.writer = MemberDAO.getMemberDAO().getMid(m_no);
 		this.b_title = b_title;
 		this.b_contents = b_contents;
 		this.b_date = b_date;

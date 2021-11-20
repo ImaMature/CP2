@@ -28,18 +28,23 @@ public class ANoticeListController implements Initializable {
 		tc=NoticeTableView.getColumns().get(1);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_title"));
 		tc=NoticeTableView.getColumns().get(2);
+		tc.setCellValueFactory(new PropertyValueFactory<>("b_contents"));
+		tc=NoticeTableView.getColumns().get(3);
 		tc.setCellValueFactory(new PropertyValueFactory<>("b_date"));
 		
 		NoticeTableView.setItems(boards); // 테이블 뷰에 리스트 넣기
-		
-		NoticeTableView.setOnMouseClicked(e -> {		// 테이블에서 행 클릭했을때 
-			if(e.getButton().equals(MouseButton.PRIMARY)) {
-				board = NoticeTableView.getSelectionModel().getSelectedItem();
-				AMainController.getamainController().ALoadPage("ANoticeViewPage");
-			
-			
-			}
-		});
+		if(LoginController.getLoginController().getloginid().equals("admin")) {
+			NoticeTableView.setOnMouseClicked(e -> {		// 테이블에서 행 클릭했을때 
+				if(e.getButton().equals(MouseButton.PRIMARY)) {
+					board = NoticeTableView.getSelectionModel().getSelectedItem();
+					AMainController.getamainController().ALoadPage("ANoticeViewPage");
+				
+				
+				}
+			});
+		}else {
+			Registerbtn.setVisible(false);
+		}
 	}
 	public static ANoticeListController anoticeController;
 	public static ANoticeListController getanoticeController() {
@@ -50,8 +55,7 @@ public class ANoticeListController implements Initializable {
 
 	public static Board board; // new를 주면 안됨
 	
-	@FXML
-    private Button Deletebtn;
+
 
     @FXML
     private TableView<Board> NoticeTableView;
@@ -60,21 +64,12 @@ public class ANoticeListController implements Initializable {
     @FXML
     private Button Registerbtn;
 
-    @FXML
-    private Button Updatebtn;
 
-    @FXML
-    void DeleteAction(ActionEvent event) {
 
-    }
 
     @FXML
     void RegisterAction(ActionEvent event) {
     	AMainController.getamainController().ALoadPage("ANoticewritePage");
     }
 
-    @FXML
-    void UpdateAction(ActionEvent event) {
-    	
-    }
 }

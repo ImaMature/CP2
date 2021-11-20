@@ -112,7 +112,7 @@ public class MMainController implements Initializable{
     //공지게시판
     @FXML
     void NoticeOMC(MouseEvent event) {
-    	try{AMainController.getamainController().ALoadPage("ANoticeListPage");}
+    	try{MMainController.getmmainController().MLoadPage("ANoticeListPage");}
     	catch(Exception e) {System.out.println("공지페이지이동오류" + e.getMessage());}
     }
     //QNA
@@ -130,12 +130,12 @@ public class MMainController implements Initializable{
     //거래 버튼
     @FXML 
     void TradeAction2(ActionEvent event) {
-    	MMainController.getmmainController().MLoadPage("TradePage2");
+    	MMainController.getmmainController().MLoadPage("TradePage");
     }
 
     @FXML
     void TradeOMC(MouseEvent event) {
-    	MMainController.getmmainController().MLoadPage("TradePage2");
+    	MMainController.getmmainController().MLoadPage("TradePage");
     }
 
     @FXML

@@ -32,30 +32,27 @@ public class ReplyDAO {
 		public static ReplyDAO replyDAO = new ReplyDAO();
 		public static ReplyDAO getreplyDAO() {return replyDAO;}
 		
-		// 답변을 등록하기 위해서
+		// 답변 등록(리플 달기) 메소드
 		public boolean Areply(Reply reply) {
-		String sql = "insert into reply(r_no, r_contents, b_no) values (?, ?, ?)";
+		String sql = "insert into reply( r_contents, b_no) values (?, ?)";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, reply.getR_no());
-			pstmt.setString(2, reply.getR_contents());
-			pstmt.setInt(3, reply.getB_no());
+			pstmt.setString(1, reply.getR_contents());
+			pstmt.setInt(2, reply.getB_no());
 			pstmt.executeUpdate();
 			return true;
-		} catch (SQLException e) {System.out.println(e.getMessage());}
+		} catch (Exception e) {System.out.println(e.getMessage());}
 		return false; } 
 		
 		// 답변 보이는 테이블 뷰
-		public ObservableList<Reply> AQnAReplyList(){
+		public ObservableList<Reply> AQnAReplyList(int b_no){
 			ObservableList<Reply> Areplys = FXCollections.observableArrayList();
-			String sql = "select * from reply where r_no = ? order by b_no desc";
+			String sql = "select * from reply where b_no = ? order by r_no desc";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				
-				rs = pstmt.executeQuery(sql);
-				
+				pstmt.setInt(1, b_no);
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 					Reply replys = new Reply(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
@@ -64,23 +61,38 @@ public class ReplyDAO {
 			} catch (Exception e) { } return Areplys;
 		}
 		
-		// 답변이 회원 입장에서 보이기
-			public ObservableList<Reply> MQnAReplyList(int r_no, int b_no){
-				ObservableList<Reply> Mreplys = FXCollections.observableArrayList();
-				String sql = "select * from  where m_no=?";
+//		// 답변이 회원 입장에서 보이기
+//			public ObservableList<Reply> MQnAReplyList(int r_no, int b_no){
+//				ObservableList<Reply> Mreplys = FXCollections.observableArrayList();
+//				String sql = "select * from member where m_no=?";
+//				try {
+//					pstmt = conn.prepareStatement(sql);
+//					pstmt.setInt(1, r_no);
+//					pstmt.setInt(2, b_no);
+//					rs=pstmt.executeQuery();
+//					while(rs.next()) {
+//						Reply reply = new Reply(rs.getString(2),rs.getString(3));
+//						Mreplys.add(reply);
+//					} return Mreplys;
+//				} catch (Exception e) { 
+//					System.out.println("MQnAReplyList() 오류 : " + e);
+//				} return null; 
+//			}
+				
+		//b_no 로 회원아이디 빼오기
+			public int B_noToM_no(int b_no) {
+				String sql = "select m_no from board where b_type = 3 and b_no = ?";
 				try {
 					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, r_no);
-					pstmt.setInt(2, b_no);
-					rs=pstmt.executeQuery();
+					pstmt.setInt(1, b_no);
+					rs = pstmt.executeQuery();
 					while(rs.next()) {
-						Reply reply = new Reply(rs.getString(2),rs.getString(3));
-						Mreplys.add(reply);
-					} return Mreplys;
-				} catch (Exception e) { 
-					System.out.println("MQnAReplyList() 오류 : " + e);
-				} return null; 
+						return rs.getInt(1);
+					}
+				} catch (Exception e) {
+					
+				}
+				return 0;
 			}
-				
 			
 }

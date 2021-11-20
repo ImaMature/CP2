@@ -29,7 +29,7 @@ public class ClientServiceController implements Initializable{
 			for(int i =0; i<MAboards.size(); i++) {
 				boolean rs = LoginController.getLoginController().getloginid().equals("admin");
 				if(!rs) {
-				System.out.println("admin 아닌가요? : " + rs);
+				
 					MQNAView.setItems(MAboards);
 					
 					TableColumn tc = MQNAView.getColumns().get(0);
@@ -48,8 +48,6 @@ public class ClientServiceController implements Initializable{
 					MQNAView.setOnMouseClicked(e -> {
 						if(e.getButton().equals(MouseButton.PRIMARY)) {
 						qnaboard=MQNAView.getSelectionModel().getSelectedItem();
-						String m_id = LoginController.getLoginController().getloginid();
-//						if()
 						MMainController.getmmainController().MLoadPage("ClientAPage");
 					}	
 				});

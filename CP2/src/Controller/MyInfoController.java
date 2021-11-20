@@ -40,7 +40,7 @@ public class MyInfoController implements Initializable{
 		MemberFundsLabel.setText(member.getM_money()+"¿ø");
 		MemberCoinAmountLabel.setText(member.getM_holdingcoin()+"°³");
 		
-		 ObservableList<Coin> coins = CoinDAO.getDAO().coinlist();
+		 ObservableList<Coin> coins = CoinDAO.getDAO().coinManagelist();
 		    ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
 
 //		    for(Coin coin : coins) {

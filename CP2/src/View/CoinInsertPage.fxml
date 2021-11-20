@@ -1,28 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoinInsertController">
    <children>
-      <Button fx:id="CoinUpdatebtn" layoutX="429.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinUpdateAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button fx:id="CoinCancelbtn" layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinCancelAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="취소" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <TableView fx:id="ACoinInserttable" layoutX="252.0" layoutY="125.0" onSort="#ACoinInsert" prefHeight="357.0" prefWidth="777.0">
-        <columns>
-          <TableColumn prefWidth="134.0" text="코인 번호" />
-          <TableColumn prefWidth="215.0" text="코인 이름" />
-            <TableColumn prefWidth="225.0" text="코인 개수" />
-            <TableColumn prefWidth="175.0" text="코인 별 총 개수" />
-        </columns>
-      </TableView>
+      <ImageView fitHeight="736.0" fitWidth="1280.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@business-3194671_1920.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="5.0" />
+         </effect>
+      </ImageView>
+      <AnchorPane layoutX="481.0" layoutY="101.0" prefHeight="555.0" prefWidth="339.0" style="-fx-background-radius: 10; -fx-background-color: #fafafa;">
+         <children>
+            <Label alignment="CENTER" layoutX="45.0" layoutY="45.0" prefHeight="39.0" prefWidth="264.0" text="Coin Register">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Button fx:id="CoinRegisterbtn" layoutX="34.0" layoutY="459.0" mnemonicParsing="false" onAction="#CRegisterAction" prefHeight="61.0" prefWidth="271.0" style="-fx-background-color: #071466;" text="등록하기" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fx:id="BackImg" fitHeight="28.0" fitWidth="27.0" layoutX="11.0" layoutY="18.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@left.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TextField fx:id="CoinNametxt" layoutX="111.0" layoutY="160.0" prefHeight="39.0" prefWidth="192.0" promptText="코인 이름" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 5;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="coinpricetxt" layoutX="110.0" layoutY="267.0" prefHeight="39.0" prefWidth="192.0" promptText="코인 가격" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 5;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <ImageView fitHeight="55.0" fitWidth="56.0" layoutX="36.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@coins.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="56.0" layoutX="36.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@won.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="56.0" layoutX="36.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@counter.png" />
+               </image>
+            </ImageView>
+            <Line endX="13.0" layoutX="246.0" layoutY="94.0" startX="-157.0" stroke="#071466" />
+            <Label layoutX="110.0" layoutY="353.0" text="코인의 총 개수를 적어주세요." />
+            <Label layoutX="111.0" layoutY="137.0" text="코인 이름을 입력해 주세요." />
+            <Label layoutX="110.0" layoutY="244.0" text="코인의 기본 가격을 입력해주세요." />
+            <TextField fx:id="maxcointxt" layoutX="110.0" layoutY="373.0" prefHeight="39.0" prefWidth="192.0" promptText="코인 총 개수 (발행량)" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-radius: 5;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+         </children>
+         <effect>
+            <DropShadow offsetY="3.0" />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="Controller.CoinManageController" prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoinManageController">
    <children>
-      <Button fx:id="CoinRegisterbtn" layoutX="430.0" layoutY="320.0" mnemonicParsing="false" onAction="#CoinRegAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE" />
-      <Button fx:id="CoinDeletebtn" layoutX="677.0" layoutY="320.0" mnemonicParsing="false" onAction="#CoinDeleteAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="코인삭제" textFill="WHITE" />
+      <Button fx:id="CoinRegisterbtn" layoutX="284.0" layoutY="550.0" mnemonicParsing="false" onAction="#CoinRegAction" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE" />
+      <Button fx:id="CoinDeletebtn" layoutX="896.0" layoutY="550.0" mnemonicParsing="false" onAction="#CoinDeleteAction" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #E6202A;" text="코인삭제" textFill="WHITE" />
+      <TableView fx:id="Coinlist" layoutX="284.0" layoutY="154.0" prefHeight="363.0" prefWidth="713.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="코인 번호" />
+          <TableColumn prefWidth="280.0" text="코인 이름" />
+            <TableColumn prefWidth="144.0" text="코인 개수" />
+            <TableColumn prefWidth="213.0" text="코인 별 총 개수" />
+        </columns>
+      </TableView>
+      <Label layoutX="249.0" layoutY="65.0" text="Coin List">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Line endX="27.0" layoutX="350.0" layoutY="114.0" startX="-100.0" stroke="#8a8a8a" />
+      <ImageView fx:id="Backimg" fitHeight="34.0" fitWidth="50.0" layoutX="52.0" layoutY="37.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@left.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

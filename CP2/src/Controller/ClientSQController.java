@@ -34,8 +34,10 @@ public class ClientSQController {
     void SendAction(ActionEvent event) {
     	String mid = LoginController.getLoginController().getloginid();
     	int m_no = MemberDAO.getMemberDAO().getMemberNo(mid);
+    	System.out.println("m_no" + m_no);
     						//DB board테이블에서 c_no가 여기서는 필요없으므로 db에서 not null인거 빼주기 그럼 0으로해도 들어감
     	Board board = new Board(m_no, QTitletxt.getText(),QContentstxt.getText(),3);
+    	System.out.println("board : " + board);
     	boolean rs = BoardDAO.getboardDAO().Mqnaboardwrite(board);
     	if(rs) {
     		MMainController.infoAlert.setTitle("알림");

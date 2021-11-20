@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AQnaAAnswerController">
+   <children>
+      <Label contentDisplay="TOP" layoutX="200.0" layoutY="48.0" prefHeight="46.0" prefWidth="376.0" style="-fx-background-color: #ffffff;" text="QnA Answer">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Line endX="114.0" layoutX="301.0" layoutY="99.0" startX="-100.0" stroke="#9e9a9a" />
+      <TableView fx:id="ReplyView" layoutX="200.0" layoutY="116.0" prefHeight="395.0" prefWidth="914.0">
+        <columns>
+          <TableColumn prefWidth="42.0" text="번호" />
+          <TableColumn prefWidth="670.0" text="답변 내용" />
+            <TableColumn prefWidth="201.0" text="날짜" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="Answertxt" layoutX="200.0" layoutY="535.0" prefHeight="91.0" prefWidth="914.0" />
+      <Button fx:id="Answerbtn" layoutX="996.0" layoutY="643.0" mnemonicParsing="false" onAction="#AnswerAction" prefHeight="46.0" prefWidth="117.0" text="답변하기" />
+      <ImageView fx:id="BackImg" fitHeight="39.0" fitWidth="66.0" layoutX="65.0" layoutY="48.0" onMouseClicked="#BackOMC" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@left.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

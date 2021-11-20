@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Domain.Board;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -16,6 +18,7 @@ public class ClientAPage implements Initializable{
 		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			
 			
 			AContentstxt.setEditable(false);
 			ATitletxt.setEditable(false);
@@ -33,7 +36,7 @@ public class ClientAPage implements Initializable{
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-	    	MMainController.getmmainController().MLoadPage("ClientSQController");
+	    	MMainController.getmmainController().MLoadPage("ClientServicePage");
 	    }
 	    
 	    //아이디 admin인걸 가져와야됨, 어드민이 작성한 거 가져와야됨.

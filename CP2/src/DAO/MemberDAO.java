@@ -233,4 +233,21 @@ public class MemberDAO {
 		}
 		return 0;
 	}
+	
+	//아이디 admin 비번 1234일때 관리자임을 식별하는 메소드
+		public boolean user_admin() {
+			String sql = "select m_id, m_pw from member where m_id = 'admin' and m_pw = '1234'";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return true;
+				}else {
+					return false;
+				}
+			} catch (Exception e) {
+				System.out.println("user_admin() 오류 : " + e);
+			}
+			return false;
+		}
 }

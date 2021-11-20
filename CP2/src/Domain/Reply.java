@@ -31,6 +31,11 @@ public class Reply {
 		this.b_no = b_no;
 	}
 
+	public Reply(String r_contents, String r_date) {
+		this.r_contents = r_contents;
+		this.r_date = r_date;
+	}
+
 	public int getR_no() {
 		return r_no;
 	}

@@ -112,7 +112,7 @@ public class MMainController implements Initializable{
     //공지게시판
     @FXML
     void NoticeOMC(MouseEvent event) {
-    	try{MMainController.getmmainController().MLoadPage("MNoticePage");}
+    	try{AMainController.getamainController().ALoadPage("ANoticeListPage");}
     	catch(Exception e) {System.out.println("공지페이지이동오류" + e.getMessage());}
     }
     //QNA

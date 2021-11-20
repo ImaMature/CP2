@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoinDeleteController">
    <children>
-      <Button fx:id="CoinUpdatebtn" layoutX="429.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinUpdateAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE">
+      <Button fx:id="CoinDeletebtn2" layoutX="429.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinDeletebtn2" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인삭제" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button fx:id="CoinDeletebtn3" layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinDeletebtn3Action" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="코인삭제" textFill="WHITE">
+      <Button fx:id="CoinDeletebtn3" layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinDeletebtn3Action" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="취소" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <TextField layoutX="430.0" layoutY="160.0" prefHeight="38.0" prefWidth="421.0" promptText="코인이름" />
-      <TextArea layoutX="429.0" layoutY="222.0" prefHeight="200.0" prefWidth="421.0" promptText="코인정보" />
-      <TextField layoutX="429.0" layoutY="443.0" prefHeight="38.0" prefWidth="421.0" promptText="코인수량" />
+      <TableView fx:id="ACoinDeletettable" layoutX="262.0" layoutY="135.0" onSort="#ACoinDelete" prefHeight="357.0" prefWidth="777.0">
+         <columns>
+            <TableColumn prefWidth="134.0" text="코인 번호" />
+            <TableColumn prefWidth="215.0" text="코인 이름" />
+            <TableColumn prefWidth="225.0" text="코인 개수" />
+            <TableColumn prefWidth="175.0" text="코인 별 총 개수" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

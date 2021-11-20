@@ -14,11 +14,11 @@ public class ChartController implements Initializable  {
     private javafx.scene.chart.LineChart LineChart;
    
     private static ArrayList<Integer> savePrice = TradeController.getSavePrice();
-
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
        System.out.println("РќШЏСп");
-       System.out.println( savePrice.toString());
+//       System.out.println( savePrice.toString());
        chart();
     }
    

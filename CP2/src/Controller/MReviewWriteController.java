@@ -46,7 +46,7 @@ public class MReviewWriteController {
 //	  		System.out.println("member.getM_no값 : " + member.getM_no());
 	    	Board board = new Board(member.getM_no(), ReviewTitletxt.getText(), ReviewContentstxt.getText(), 2, MReviewCoinbtnController.C_num);
 	    		//System.out.println("board객체 값 : " + board.toString());
-	    	boolean result = BoardDAO.getboardDAO().boardwrite(board);
+	    	boolean result = BoardDAO.getboardDAO().c_boardwrite(board);
 	    	if(result) {
 	    		MMainController.infoAlert.setTitle("알림");
 	    		MMainController.infoAlert.setHeaderText("게시물 등록 성공");

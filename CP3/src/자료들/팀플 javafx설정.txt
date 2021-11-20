@@ -1,0 +1,183 @@
+크기규격 : 1280*800
+기본 바탕색 #ffffff
+Achorpane 바탕색 : #fafafa
+기본버튼색 : #071466 
+기본글자색 : #FFFFFF
+포인트버튼색(회원가입등) : #0008E6
+취소버튼색 : #E6202A (붉은색)
+제3버튼색 : #151515 글자색 : #ffffff
+
+fxml 설정 규칙
+모식도의 페이지명.fxml
+이름(화면에 표현되는대로)		fx:id(직관적, 기능+종류)		
+
+설정이 다를수도 있음 다르면 최신화나 이야기를 부탁드립니다.
+
+MainPage.fxml
+이름			fx:id		Action
+BorderPane 		MainBoarderPane
+AnchorPane		cp
+거래소 둘러보기		Tradebtn		TradeAction
+로그인			Loginbtn		LoginAction
+로그인 아이디		UserId		UserIdOMC
+로고			LogoLabel	LogoOMC
+사람그림			ManImage	ManimageOMC
+공지사항			NoticeLabel	NoticeOMC
+거래			TradeLabel	TradeOMC
+게시판			BoardLabel	BoardOMC
+고객센터			QnALabel	QnAOMC
+================================================
+LoginPage.fxml
+이름			fx:id		Action
+회원가입			SignUpbtn	SignUpAction
+로그인			Loginbtn		
+계정을잊으셨나요라벨	FindLabel	FindIdPwOMC
+ID입력			IDtxt
+PW입력			PWtxt
+================================================
+SignUpPage.fxml
+이름			fx:id		Action
+ID입력			IDtxt
+PW입력			PWtxt
+PW확인			PWConfirmtxt
+이름입력			Nametxt
+이메일입력		Emailtxt
+가입하기			SignUpbtn	RealSignupAction
+취소			Cancelbtn	CancelAction
+================================================
+AMainPage.fxml
+이름			fx:id		Action
+로그아웃			LogoutLabel	LogoutOMC
+공지사항			ANoticeLabel	AdminNoticeOMC
+거래			ATradeLabel	AdminTradeOMC
+게시판			ABoardLabel	AdminBoardOMC
+고객센터			AQnALabel	AdminQnAOMC
+로고			Alblhome	AdminHomeOMC
+로그아웃			AdminLogout	AdminLogoutOMC
+================================================
+ANoticePage.fxml
+이름			fx:id		Action
+등록			Registerbtn	RegisterAction
+수정			Updatebtn	UpdateAction
+삭제			Deletebtn	DeleteAction
+================================================
+MMainPage.fxml
+이름			fx:id		Action
+로고			LogoLabel	LogoOMC
+공지사항			NoticeLabel	NoticeOMC
+거래			TradeLabel	TradeOMC
+게시판			BoardLabel	BoardOMC
+고객센터			QnALabel	QnAOMC
+사람그림			ManImage	ManimageOMC
+로그인 아이디		UserId		UserIdOMC
+입출금			GetMoneybtn	TradeAction
+거래			Tradebtn		TradeAction2
+================================================
+TradePage.fxml
+이름			fx:id		Action
+AnchorPane		ChartPane	
+차트AnchorPane		LineChartPane
+차트			LineChart
+구매			CoinBuybtn	CoinBuyAction
+판매			CoinSellbtn	CoinSellAction
+코인 이름		CoinNameLabel
+코인 가격		CoinPriceLabel
+남은 개수		CoinAmountLabel
+코인 정보		CoinInfoPane(임시)
+코인 판매 정보		CoinSellInfoPane(임시)
+텍스트필드3개는 보류
+
+=================================================
+MFindIdPage.fxml
+이름			fx:id		Action
+패스워드버튼		GoFindPwbtn	GoFindPwAction
+이름입력			Nametxt		
+이메일입력		Emailtxt
+아이디찾기		FindIdbtn		FindIdAction
+뒤로가기이미지		ImageBack	BackOMC
+
+=================================================
+MFindPwPage.fxml
+이름			fx:id		Action
+아이디입력		Idtxt
+이름입력			Nametxt
+비밀번호찾기		FindPwbtn	FinPwAction
+뒤로가기이미지		ImageBack	BackOMC
+아이디버튼		GoFindIdbtn	GoFindIdAction
+
+=================================================
+MNoticePage.fxml
+이름			fx:id		Action
+등록			Registerbtn	RegisterAction	
+수정			Updatebtn	UpdateAction
+삭제			Deletebtn	DeleteAction
+공지테이블		NoticeTableView	
+=================================================
+
+
+==================================================
+CoinManagePage.fxml
+코인등록			CoinRegisterbtn	CoinRegAction
+코인수정			CoinUpdatebtn	CoinUpdateAction
+
+코인삭제			CoinDeletebtn	CoinDeleteAction
+
+==================================================
+BoardPage.fxml
+이름			fx:id			Action
+코인에 대한 리뷰		Coinreview
+------------------------- 임시 코인 이름 -------------------------
+비트코인			Bitcoinbtn		BitcoinAction
+리플			Ripplebtn		RippleAction
+이더리움			Ethereumbtn		EthereumAction
+에이다			Adabtn			AdaAction
+아이오타			Iotabtn			IotaAction
+대시			Dashbtn			DashAction
+------------------------- 임시 코인 이름 -------------------------
+게시물 등록		Registerbtn		RegisterAction
+게시물 수정		PostUpdatebtn		UpdateAction
+게시물 삭제		PostDeletebtn		DeleteAction
+
+=================================================
+ClientServicePage.fxml
+이름			fx:id			Action
+제목			QATitletxt
+문의내용			QAContentstxt
+계정			Accountopt
+가입/탈퇴		JoinWithdrawopt
+거래/자산		DealAssetsopt
+원화 익금/출금		Paidinoutopt
+기타			Etcopt
+보내기			Sendbtn			SendAction
+취소			Cancelbtn		CancelAction
+
+=================================================
+MyInfoPage.fxml
+이름		fx:id			Action
+회원 아이디	MemberID
+회원 이름	MemberNametxt
+회원 이메일	MemberEmailtxt
+보유자산		Assettxt
+보유자금		Fundstxt
+수정		Memberupdatebtn
+탈퇴		Secessionbtn
+
+=================================================
+CoinInsertPage.fxml
+이름		fx:id			Action
+코인이름		CoinNametxt
+코인정보		CoinInfotxt
+코인수량		CoinBlocktxt
+코인삭제		CoinDeletebtn2		CoinDeletebtn2Action
+코인취소		CoinCancelbtn		CoinCancelAction
+
+=================================================
+CoinDeletePage.fxml
+이름		fx:id			Action
+코인이름		CoinName2
+코인정보		CoinInfotxt2
+코인수량		CoinBlocktxt2
+코인등록		CoinUpdatebtn		CoinUpdateAction
+코인삭제		CoinDeletebtn3		CoinDeletebtn3Action
+
+=================================================

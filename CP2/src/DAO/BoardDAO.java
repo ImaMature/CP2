@@ -33,11 +33,29 @@ public class BoardDAO {
 		return boardDAO;
 	}
 	
+	// 코인 게시판 제외한 다른 게시판 등록 메소드
+		public boolean boardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
+			String sql = "insert into board(m_no, b_title, b_contents, b_type) values (?, ?, ?, ?)";
+			// board table(DB)에 m_no, b_title b_contetns b_type c_no에 전달받은 값을 넣는다.
+			//m_no는 member db에서 fk로 받아옴. b_title과 b_contents는 boardwritecontroller에서 .gettext로 받아옴.
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, board.getM_no());
+				pstmt.setString(2, board.getB_title());
+				pstmt.setString(3, board.getB_contents());
+				pstmt.setInt(4, board.getB_type());
+				pstmt.executeUpdate();
+				return true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return false;
+		}
 	
 	
-	// 코인 리뷰 게시판 게시물등록 메소드
-	public boolean boardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
-		String sql = "insert into board(m_no, b_title, b_contents, b_type, c_no) values (?, ?, ?, ?, ?)";
+	// 코인 리뷰 게시판 등록 메소드
+	public boolean c_boardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
+		String sql = "insert into board(m_no, b_title, b_contents, b_type, c_no) values (?, ?, ?, ?,?)";
 		// board table(DB)에 m_no, b_title b_contetns b_type c_no에 전달받은 값을 넣는다.
 		//m_no는 member db에서 fk로 받아옴. b_title과 b_contents는 boardwritecontroller에서 .gettext로 받아옴.
 		try {
@@ -54,25 +72,6 @@ public class BoardDAO {
 		}
 		return false;
 	}
-	
-	// 코인 리뷰 게시판 게시물등록 메소드
-	public boolean QNAwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
-		String sql = "insert into board(m_no, b_title, b_contents, b_type) values (?, ?, ?, ?)";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, board.getM_no());
-			pstmt.setString(2, board.getB_title());
-			pstmt.setString(3, board.getB_contents());
-			pstmt.setInt(4, board.getB_type());
-			pstmt.executeUpdate();
-			return true;
-					
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return false;		
-	}
-	
 	
 	//회원 넘버 빼오는 메소드
 	public int boardgetMno(String m_id) {
@@ -94,24 +93,63 @@ public class BoardDAO {
 	}
 	
 	
+		
+		// 게시물 출력
+		public ObservableList<Board> ABoardList() {
+			ObservableList<Board> Aboards = FXCollections.observableArrayList();
+			String sql = "select * from board where b_type = 1 order by b_no desc";
+				// 1번 공지사항 타입을 번호로 빼오는것
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				while(rs.next()) {
+					Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+					Aboards.add(boards);
+				} return Aboards;
+			} catch (Exception e) { } return Aboards;
+		}
+		
+		// 게시물 삭제
+		public boolean delete(int b_no) {
+			String sql = "delete from board where b_no=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, b_no);
+				pstmt.executeUpdate();
+				return true;
+			} catch (Exception e) { } return false;
+		}
+		
+		// 게시물 수정
+		public boolean update(int b_no, String b_title, String b_contents) {
+			String sql = "update board set b_title=?, b_contents=? where b_no=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, b_title);
+				pstmt.setString(2, b_contents);
+				pstmt.setInt(3, b_no);
+				pstmt.executeUpdate();
+				return true;
+			} catch (Exception e) { } return false;
+		}
+		
+		// 
+		public ObservableList<Board> AQnAList() {
+			ObservableList<Board> Aboards = FXCollections.observableArrayList();
+			String sql = "select * from board where b_type = 3 order by b_no desc";
+				// 3번 QnA 타입을 번호로 빼오는것
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+				while(rs.next()) {
+					Board boards = new Board(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+					Aboards.add(boards);
+				} return Aboards;
+			} catch (Exception e) { } return Aboards;
+		}
+		
 	
-	
-	
-//// 일반 게시물 출력
-//		public ObservableList<Board> ABoardList() {
-//			ObservableList<Board> Aboards = FXCollections.observableArrayList();
-//			String sql = "select * from board where b_type = 1 order by b_no desc";
-//				// 1번 공지사항 타입을 번호로 빼오는것
-//			try {
-//				pstmt = conn.prepareStatement(sql);
-//				rs=pstmt.executeQuery();
-//				while(rs.next()) {
-//					Board boards = new Board(rs.getInt(1), rs.getString(3), rs.getString(5));
-//					Aboards.add(boards);
-//				} return Aboards;
-//			} catch (Exception e) { } return Aboards;
-//		}
-//	
 	//코인 리뷰 게시판 리스트 선언.
 	public ObservableList<Board> MBoardList( int type, int c_num ) {
 		ObservableList<Board> Mboards = FXCollections.observableArrayList();
@@ -237,6 +275,25 @@ public class BoardDAO {
 		} catch (Exception e) { System.out.println( e ); } return MAboards;
 	}
 	
+	
+	//QNA 게시판
+	public boolean Mqnaboardwrite(Board board) { // 게시판 쓰기를 위한 메소드 board 도메인에 있는걸 받아오기 위해서 매개변수로 board 선언. 
+		String sql = "insert into board(m_no, b_title, b_contents, b_type) values (?, ?, ?, ?)";
+		// board table(DB)에 m_no, b_title b_contetns b_type c_no에 전달받은 값을 넣는다.
+		//m_no는 member db에서 fk로 받아옴. b_title과 b_contents는 boardwritecontroller에서 .gettext로 받아옴.
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board.getM_no());
+			pstmt.setString(2, board.getB_title());
+			pstmt.setString(3, board.getB_contents());
+			pstmt.setInt(4, board.getB_type());
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
 	
 	
 	

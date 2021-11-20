@@ -32,7 +32,7 @@ public class AQnAController implements Initializable {
 		
 		// 테이블 표시 하기 위해서
 		for(int i = 0; i < boards.size(); i++) {
-			if(LoginController.getMainController().getloginid().equals("admin")) {
+			if(LoginController.getLoginController().getloginid().equals("admin")) {
 				
 				QnATableView.setItems(boards);
 				
@@ -51,7 +51,7 @@ public class AQnAController implements Initializable {
 				QnATableView.setOnMouseClicked(e -> {
 					if(e.getButton().equals(MouseButton.PRIMARY)) {
 						board = QnATableView.getSelectionModel().getSelectedItem();
-						// AMainController.getamainController().ALoadPage("AQnAViewPage");
+						 AMainController.getamainController().ALoadPage("AQnAViewPage");
 						// 회원의 "ID를 괄호안(String)에 넣으면" 괄호안에 넣은 회원의 DB내 번호가 반환되는 메소드
 //						int memberno = MemberDAO.getMemberDAO().getMemberNo();
 //						System.out.println(memberno);
@@ -82,7 +82,7 @@ public class AQnAController implements Initializable {
 
     @FXML
     void AUpdateAction(ActionEvent event) {
-    	String loginid = LoginController.getMainController().getloginid();
+    	String loginid = LoginController.getLoginController().getloginid();
     	Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
     	Reply Reply = new Reply( AQnAreply.getText() , board.getB_no() );
     	boolean result = ReplyDAO.getreplyDAO().Areply( Reply );

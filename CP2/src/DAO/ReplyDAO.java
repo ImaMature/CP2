@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Domain.Reply;
 import javafx.collections.FXCollections;
@@ -48,7 +49,7 @@ public class ReplyDAO {
 		// 답변 보이는 테이블 뷰
 		public ObservableList<Reply> AQnAReplyList(){
 			ObservableList<Reply> Areplys = FXCollections.observableArrayList();
-			String sql = "select * from reply where r_no = 3 order by b_no desc";
+			String sql = "select * from reply where r_no = ? order by b_no desc";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -62,4 +63,24 @@ public class ReplyDAO {
 				} return Areplys;
 			} catch (Exception e) { } return Areplys;
 		}
+		
+		// 답변이 회원 입장에서 보이기
+			public ObservableList<Reply> MQnAReplyList(int r_no, int b_no){
+				ObservableList<Reply> Mreplys = FXCollections.observableArrayList();
+				String sql = "select * from  where m_no=?";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, r_no);
+					pstmt.setInt(2, b_no);
+					rs=pstmt.executeQuery();
+					while(rs.next()) {
+						Reply reply = new Reply(rs.getString(2),rs.getString(3));
+						Mreplys.add(reply);
+					} return Mreplys;
+				} catch (Exception e) { 
+					System.out.println("MQnAReplyList() 오류 : " + e);
+				} return null; 
+			}
+				
+			
 }

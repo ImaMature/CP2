@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="736.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CoinInsertController">
+   <children>
+      <Button fx:id="CoinUpdatebtn" layoutX="429.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinUpdateAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #0008E6;" text="코인등록" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="CoinCancelbtn" layoutX="675.0" layoutY="515.0" mnemonicParsing="false" onAction="#CoinCancelAction" prefHeight="62.0" prefWidth="176.0" style="-fx-background-color: #E6202A;" text="취소" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TableView fx:id="ACoinInserttable" layoutX="252.0" layoutY="125.0" onSort="#ACoinInsert" prefHeight="357.0" prefWidth="777.0">
+        <columns>
+          <TableColumn prefWidth="134.0" text="코인 번호" />
+          <TableColumn prefWidth="215.0" text="코인 이름" />
+            <TableColumn prefWidth="225.0" text="코인 개수" />
+            <TableColumn prefWidth="175.0" text="코인 별 총 개수" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

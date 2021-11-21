@@ -5,6 +5,7 @@ public class Coin {
    private int c_price;
    private int c_maxcoin;
    private int c_no;
+   private int m_no;
    
    public Coin() {
 	   

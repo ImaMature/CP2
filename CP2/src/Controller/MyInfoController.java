@@ -1,6 +1,10 @@
 package Controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -30,23 +34,56 @@ public class MyInfoController implements Initializable{
 		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
-		String loginid = LoginController.getLoginController().getloginid();
-		
-		Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
-		
-		MemberIDLabel.setText(member.getM_id());
-		MemberNameLabel.setText(member.getM_name());
-		MemberEmailLabel.setText(member.getM_email());
-		MemberFundsLabel.setText(member.getM_money()+"원");
-		MemberCoinAmountLabel.setText(member.getM_holdingcoin()+"개");
-		
-		 ObservableList<Coin> coins = CoinDAO.getDAO().coinManagelist();
+			
+			//외부에 저장된 데이터를 읽어오는 fileinputstream
+			ArrayList<Member> mem = new ArrayList<>();
+			try {
+				FileInputStream fileInputStream = new FileInputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt");
+				
+				byte [] bytes = new byte [1024];
+				
+				fileInputStream.read(bytes);
+				
+				String inputString = new String(bytes);
+				
+				
+
+				mem.add(inputString);
+				
+			} catch (Exception e) {
+				System.out.println("fileinput 오류 : " + e.getMessage());
+			}
+			
+			String loginid = LoginController.getLoginController().getloginid();
+			
+			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
+			
+			MemberIDLabel.setText(member.getM_id());
+			MemberNameLabel.setText(member.getM_name());
+			MemberEmailLabel.setText(member.getM_email());
+			MemberFundsLabel.setText(member.getM_money()+"원");
+			MemberCoinAmountLabel.setText(member.getM_holdingcoin()+"개");
+			
+			try {
+				FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt", true);
+				
+				Member mem3 = new Member(member.getM_inputcoinname());
+				
+				String outStr = mem3.getM_inputcoinname()+"\n";
+				
+				fileOutputStream.write(outStr.getBytes());
+			} catch (Exception e) {
+				System.out.println("fileoutput 오류 : "+e.getMessage());
+			}
+			
+			ObservableList<Coin> coins = CoinDAO.getDAO().coinManagelist();
 		    ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
 
-//		    for(Coin coin : coins) {
-//		    	pie.add(new PieChart.Data((), )); 뭐들어가야되는거지
-//		    }
-		
+		    for(Coin coin : coins) {
+		    	pie.add(new PieChart.Data(coin.getC_name(), 1)); 
+		    }
+	
+		    CoinPieChart.setData(pie);
 		}
 	
 	  	

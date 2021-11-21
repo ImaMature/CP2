@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="579.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="BuyCoinlbl" layoutX="67.0" layoutY="160.0" prefHeight="8.0" prefWidth="59.0" text="구매" />
+      <Label fx:id="SellCoinlbl" layoutX="220.0" layoutY="160.0" prefHeight="8.0" prefWidth="59.0" text="판매" />
+   </children>
+</AnchorPane>

@@ -188,7 +188,7 @@ public class CoinDAO {
    
    
    
-   //코인 테이블 뷰
+   //코인 테이블 뷰(회원정보에 보일거)
    public ObservableList<Coin> coinManagelist(){
 	   ObservableList<Coin> coins = FXCollections.observableArrayList();
 	   

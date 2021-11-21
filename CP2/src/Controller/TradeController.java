@@ -12,12 +12,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class TradeController implements Initializable {
    private static ArrayList<Integer> savePrice = new ArrayList<>();
+   private static ArrayList<Integer> saveEachPrice = new ArrayList<>();
    ArrayList<String> coinName = new ArrayList<>();
+   CoinListRefreshController cc = new CoinListRefreshController();
+   static String getStringCoinName;
    int saveBefore = 0;
    int saveAfter;
    String coinname;
@@ -25,6 +29,11 @@ public class TradeController implements Initializable {
    Thread refreshChart;
    Thread refreshRandom;
    Thread ListRefresh;
+
+   // 스트링을 차트 값으로 넘겨야함
+   // 디폴트값은 비트코인
+   // 넘긴 스트링값만 차트에 찍음
+   // 리스트에 저장? - 코인개수만큼 리스트생성? - 각 코인을 리스트에 저장?
 
    @Override
    public void initialize(URL arg0, ResourceBundle arg1) {
@@ -37,7 +46,9 @@ public class TradeController implements Initializable {
                @Override
                public void run() {
                   LoadPage("ChartPage");
-                  System.out.println(coinName);
+                  if (getStringCoinName != null) {
+//                     ChartController.eachChart();
+                  }
                }
             };
 
@@ -57,10 +68,12 @@ public class TradeController implements Initializable {
          @Override
          public void run() {
             while (true) {
+               System.out.println("getString :" + getStringCoinName);
                try {
                   int i = 0;
                   for (int h = 0; h < i + 1; h++) {
                      ChangeCoinName();
+                     selectCoinName();
                   }
                   while (true) {
                      if (saveAfter == 0) {
@@ -79,9 +92,7 @@ public class TradeController implements Initializable {
                   System.out.println(e.getMessage());
                }
             }
-
          }
-
       });
       ListRefresh = new Thread(new Runnable() {
 
@@ -96,7 +107,7 @@ public class TradeController implements Initializable {
             };
             while (true) {
                try {
-                  Thread.sleep(500);
+                  Thread.sleep(1000);
                } catch (Exception e) {
                   System.out.println(e.getMessage());
                }
@@ -105,8 +116,8 @@ public class TradeController implements Initializable {
          }
       });
       refreshRandom.start();
-      ListRefresh.start();
       refreshChart.start();
+      ListRefresh.start();
    }
 
    public static TradeController tradeController;
@@ -120,7 +131,7 @@ public class TradeController implements Initializable {
    }
 
    public static ArrayList<Integer> getSavePrice() {
-      return savePrice;
+      return saveEachPrice;
    }
 
    @FXML
@@ -152,13 +163,12 @@ public class TradeController implements Initializable {
       Random ran = new Random();
       for (int q = 1; q < coincol + 1; q++) {
          coinName.add(CoinDAO.getDAO().getCoinName(q));
-         System.out.println("coinName :" + coinName.get(q));
+         System.out.println("coinName : " + coinName.get(q));
          saveAfter = CoinDAO.getDAO().outPrice(coinName.get(q));
          System.out.println("saveAfter : " + saveAfter);
          while (true) {
             saveBefore = ran.nextInt(100000000);
             if (saveBefore < (saveAfter + 500000) && saveBefore > (saveAfter - 500000)) {
-
                System.out.println("saveBefore : " + saveBefore);
                savePrice.add(saveBefore);
                saveAfter = saveBefore;
@@ -170,6 +180,23 @@ public class TradeController implements Initializable {
          Thread.sleep(1000);
       } catch (InterruptedException e) {
          System.out.println(e.getMessage());
+      }
+   }
+
+   public void selectCoinName() {
+      if (getStringCoinName != null) {
+         for (int q = 1; q < coincol + 1; q++) {
+            if (getStringCoinName.trim().equals(CoinDAO.getDAO().getCoinName(q))) {
+               saveEachPrice.add(CoinDAO.getDAO().outPrice(getStringCoinName.trim()));
+            } else {
+               System.out.println("아니다");
+            }
+         }
+         try {
+            Thread.sleep(1000);
+         } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+         }
       }
    }
 }

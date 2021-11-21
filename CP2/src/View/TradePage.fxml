@@ -6,7 +6,11 @@
 
 <BorderPane fx:id="TradeBoarderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="1109.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TradeController">
    <right>
-      <AnchorPane prefHeight="579.0" prefWidth="383.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="579.0" prefWidth="383.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="162.0" layoutY="100.0" prefHeight="8.0" prefWidth="59.0" text="구매" />
+         </children>
+      </AnchorPane>
    </right>
    <left>
       <AnchorPane prefHeight="579.0" prefWidth="450.0" BorderPane.alignment="CENTER">

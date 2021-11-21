@@ -60,11 +60,6 @@ public class Member {
 
 
 
-	public Member(String[] memberCoin) {
-		this.m_inputcoinname = m_inputcoinname;
-	}
-
-
 	public int getM_no() {
 		return m_no;
 	}

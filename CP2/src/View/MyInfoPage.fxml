@@ -90,7 +90,7 @@
                   <Image url="@left.png" />
                </image>
             </ImageView>
-            <Label layoutX="235.0" layoutY="12.0" prefHeight="39.0" prefWidth="76.0" text="My info" textFill="#071466">
+            <Label layoutX="212.0" layoutY="12.0" prefHeight="39.0" prefWidth="99.0" text="My info" textFill="#071466">
                <font>
                   <Font size="21.0" />
                </font>

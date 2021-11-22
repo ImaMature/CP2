@@ -100,7 +100,7 @@ public class CoinListRefreshController implements Initializable {
          
          try {
             
-            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\JHD\\git\\CP2\\CP2\\src\\text/Click.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\504\\git\\CP2\\CP2\\src\\text/Click.txt");
             
             fileOutputStream.write(ClickCoinName.trim().getBytes());
             fileOutputStream.flush();
@@ -114,7 +114,7 @@ public class CoinListRefreshController implements Initializable {
          
          try {
             
-            fileInputStream = new FileInputStream("C:\\Users\\JHD\\git\\CP2\\CP2\\src\\text/Click.txt");
+            fileInputStream = new FileInputStream("C:\\Users\\504\\git\\CP2\\CP2\\src\\text/Click.txt");
             
             byte[] bytes = new byte[10];
             fileInputStream.read(bytes);

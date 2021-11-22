@@ -29,6 +29,7 @@ public class TradeController implements Initializable {
    Thread refreshChart;
    Thread refreshRandom;
    Thread ListRefresh;
+   Thread refreshCoin;
 
    // 스트링을 차트 값으로 넘겨야함
    // 디폴트값은 비트코인
@@ -115,9 +116,31 @@ public class TradeController implements Initializable {
             }
          }
       });
+      refreshCoin = new Thread(new Runnable() {
+
+         @Override
+         public void run() {
+            Runnable refreshCoinPrice = new Runnable() {
+
+               @Override
+               public void run() {
+                  LoadRightPage("TradeCoinPage");
+               }
+            };
+            while(true) {
+               try {
+                  Thread.sleep(1000);
+               } catch (InterruptedException e) {
+                  System.out.println(e.getMessage());
+               }
+               Platform.runLater(refreshCoinPrice);
+            }
+         }
+      });
       refreshRandom.start();
       refreshChart.start();
       ListRefresh.start();
+      refreshCoin.start();
    }
 
    public static TradeController tradeController;
@@ -149,6 +172,15 @@ public class TradeController implements Initializable {
       }
    }
 
+   public void LoadRightPage(String page) {
+      try {
+         Parent parent = FXMLLoader.load(getClass().getResource("/View/" + page + ".fxml"));
+         TradeBoarderPane.setRight(parent);
+      } catch (IOException e) {
+         System.out.println(e.getMessage());
+      }
+   }
+
    public void LoadCenterPage(String page) {
       try {
          Parent parent = FXMLLoader.load(getClass().getResource("/View/" + page + ".fxml"));
@@ -159,7 +191,7 @@ public class TradeController implements Initializable {
    }
 
    public void ChangeCoinName() {
-      coincol = CoinDAO.getDAO().coinCol();
+      coincol = CoinDAO.getDAO().checkCoin();
       Random ran = new Random();
       for (int q = 1; q < coincol + 1; q++) {
          coinName.add(CoinDAO.getDAO().getCoinName(q));

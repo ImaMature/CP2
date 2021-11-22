@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="579.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TradeCoinController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="140.0" prefWidth="354.0" />
+      <AnchorPane layoutX="14.0" layoutY="161.0" prefHeight="409.0" prefWidth="354.0">
+         <children>
+            <Button fx:id="Buybtn" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#BuybtnAction" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #071466;" text="구매" textFill="WHITE" />
+            <Button fx:id="Sellbtn" layoutX="196.0" layoutY="354.0" mnemonicParsing="false" onAction="#SellbtnAction" prefHeight="45.0" prefWidth="144.0" style="-fx-background-color: #E6202A;" text="판매" textFill="WHITE" />
+            <TextField fx:id="NowCoinPricetxt" layoutX="80.0" layoutY="295.0" prefHeight="37.0" prefWidth="260.0" />
+            <Label alignment="CENTER" layoutX="14.0" layoutY="295.0" prefHeight="37.0" prefWidth="59.0" text="현재가" />
+            <Label fx:id="BuyAndSellMessageLabel" alignment="CENTER" layoutX="14.0" layoutY="245.0" prefHeight="37.0" prefWidth="323.0">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -106,6 +106,23 @@ public class CoinDAO {
          return 0;
       }
    }
+// 코인 개수를 가져올 메소드
+   public int checkCoin() {
+      try {
+
+         String sql = "select count(*) from coin";
+         pstmt = conn.prepareStatement(sql);
+
+         rs = pstmt.executeQuery();
+         if (rs.next()) {
+            return rs.getInt(1);
+         }
+         return 0;
+      } catch (SQLException e) {
+         System.out.println(e.getMessage());
+         return 0;
+      }
+   }
 
    // 코인 이름, 가격, 총개수를 가져올 메소드
    public Coin getCoinStatus(int c_no) {
@@ -173,7 +190,7 @@ public class CoinDAO {
 
          String sql = "select c_no from coin where c_name = ?";
          pstmt = conn.prepareStatement(sql);
-
+         pstmt.setString(1, c_name);
          rs = pstmt.executeQuery();
          if (rs.next()) {
             return rs.getInt(1);

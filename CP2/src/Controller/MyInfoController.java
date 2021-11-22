@@ -37,23 +37,23 @@ public class MyInfoController implements Initializable{
 			
 			//외부에 저장된 데이터를 읽어오는 fileinputstream
 			ArrayList<Member> mem = new ArrayList<>();
-			try {
-				FileInputStream fileInputStream = new FileInputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt");
-				
-				byte [] bytes = new byte [1024];
-				
-				fileInputStream.read(bytes);
-				
-				String inputString = new String(bytes);
-				
-				
-
-				mem.add(inputString);
-				
-			} catch (Exception e) {
-				System.out.println("fileinput 오류 : " + e.getMessage());
-			}
-			
+//			try {
+//				FileInputStream fileInputStream = new FileInputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt");
+//				
+//				byte [] bytes = new byte [1024];
+//				
+//				fileInputStream.read(bytes);
+//				
+//				String inputString = new String(bytes);
+//				
+//				
+//
+//				mem.add(inputString);
+//				
+//			} catch (Exception e) {
+//				System.out.println("fileinput 오류 : " + e.getMessage());
+//			}
+//			
 			String loginid = LoginController.getLoginController().getloginid();
 			
 			Member member = MemberDAO.getMemberDAO().getmemberinfo(loginid);
@@ -63,19 +63,19 @@ public class MyInfoController implements Initializable{
 			MemberEmailLabel.setText(member.getM_email());
 			MemberFundsLabel.setText(member.getM_money()+"원");
 			MemberCoinAmountLabel.setText(member.getM_holdingcoin()+"개");
-			
-			try {
-				FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt", true);
-				
-				Member mem3 = new Member(member.getM_inputcoinname());
-				
-				String outStr = mem3.getM_inputcoinname()+"\n";
-				
-				fileOutputStream.write(outStr.getBytes());
-			} catch (Exception e) {
-				System.out.println("fileoutput 오류 : "+e.getMessage());
-			}
-			
+//			
+//			try {
+//				FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/JHD/git/CP2/CP2/src/text/usercoinlist.txt", true);
+//				
+//				Member mem3 = new Member(member.getM_inputcoinname());
+//				
+//				String outStr = mem3.getM_inputcoinname()+"\n";
+//				
+//				fileOutputStream.write(outStr.getBytes());
+//			} catch (Exception e) {
+//				System.out.println("fileoutput 오류 : "+e.getMessage());
+//			}
+//			
 			ObservableList<Coin> coins = CoinDAO.getDAO().coinManagelist();
 		    ObservableList<PieChart.Data> pie = FXCollections.observableArrayList();
 

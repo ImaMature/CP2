@@ -18,7 +18,7 @@
         <columns>
           <TableColumn prefWidth="75.0" text="코인 번호" />
           <TableColumn prefWidth="280.0" text="코인 이름" />
-            <TableColumn prefWidth="144.0" text="코인 개수" />
+            <TableColumn prefWidth="144.0" text="코인 가격" />
             <TableColumn prefWidth="213.0" text="코인 별 총 개수" />
         </columns>
       </TableView>

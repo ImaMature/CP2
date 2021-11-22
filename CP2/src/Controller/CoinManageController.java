@@ -49,7 +49,7 @@ public class CoinManageController implements Initializable {
 
 	    @FXML
 	    void BackOMC(MouseEvent event) {
-
+	    	AMainController.amainController.ALoadPage("AHomePage");
 	    }
 	    
 	    public void coinlist() {
@@ -60,13 +60,13 @@ public class CoinManageController implements Initializable {
 			tc.setCellValueFactory(new PropertyValueFactory<>("c_no"));
 			
 			tc = Coinlist.getColumns().get(1);
-			tc.setCellValueFactory(new PropertyValueFactory<>("c_maxcoin"));
+			tc.setCellValueFactory(new PropertyValueFactory<>("c_name"));
 			
 			tc = Coinlist.getColumns().get(2);
 			tc.setCellValueFactory(new PropertyValueFactory<>("c_price"));
 			
 			tc = Coinlist.getColumns().get(3);
-			tc.setCellValueFactory(new PropertyValueFactory<>("c_name"));
+			tc.setCellValueFactory(new PropertyValueFactory<>("c_maxcoin"));
 			
 			Coinlist.setOnMouseClicked(e -> { //e -> {정의}
 				// 2. 클릭 이벤트가 마우스 클릭과 같으면 

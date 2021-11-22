@@ -34,8 +34,7 @@ public class AMainController implements Initializable {
 		amainController=this;
 	}
 
-    @FXML
-    private Label ABoardLabel;
+  
     
     @FXML
     private AnchorPane AMainBoarderPane;
@@ -64,10 +63,7 @@ public class AMainController implements Initializable {
     @FXML
     private Button Tradebtn;
 
-    @FXML
-    void AdminBoardOMC(MouseEvent event) { 
-    	AMainController.getamainController().ALoadPage("ACoinlistPage");
-    }
+  
 
     @FXML
     void AdminHomeOMC(MouseEvent event) {

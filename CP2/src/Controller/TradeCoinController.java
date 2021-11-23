@@ -104,7 +104,7 @@ public class TradeCoinController implements Initializable {
 			BuyAndSellMessageLabel.setText("구매실패 : 잔액부족");
 		}
 	}
-
+//
 	@FXML
 	void SellbtnAction(ActionEvent event) {
 		holdingCoinList = MemberDAO.getMemberDAO().getMemberHoldingCoin(

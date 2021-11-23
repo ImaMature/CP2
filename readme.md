@@ -60,4 +60,5 @@
 - 더 다양한 기능을 구현했으면 하는 아쉬움이 있다
 
 ## 시연영상 (압축파일)
-> [Coin.zip](https://github.com/ImaMature/CP2/files/7586792/Coin.zip)
+
+[CoinClips.zip](https://github.com/ImaMature/CP2/files/7586800/CoinClips.zip)
